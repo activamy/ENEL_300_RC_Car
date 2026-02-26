@@ -6639,6 +6639,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" "IFSC2020DEER4R7M01"
+			(at 328.93 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "0a7c5d8f-b5ea-4ebb-ad29-579ccbe95327")
 		)
@@ -6775,6 +6784,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" ""
+			(at 124.46 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "21b91422-edf5-458d-9dcb-c7306c42b42c")
 		)
@@ -6845,6 +6863,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" "CL32A226KAJNNNE"
+			(at 355.6 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "86f361e7-4aaf-46c7-838e-9c8cee63b604")
 		)
@@ -6904,6 +6931,15 @@
 			)
 		)
 		(property "Description" "Fuse, small symbol"
+			(at 353.06 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacture Part Number" "0685T4000-01"
 			(at 353.06 191.77 0)
 			(effects
 				(font
@@ -6982,6 +7018,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" "CL31B106KAHNNNE"
+			(at 279.4 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "5ac6bd55-5893-4212-86f7-e72dd8b77bb3")
 		)
@@ -7052,6 +7097,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" "C1206C104K5RACTU"
+			(at 144.78 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "fad9daf8-8c27-4289-8e8c-b3950feedac1")
 		)
@@ -7114,6 +7168,15 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 283.21 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacture Part Number" ""
 			(at 283.21 191.77 0)
 			(effects
 				(font
@@ -7277,6 +7340,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" ""
+			(at 381 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "408cf15b-5e71-406c-8d80-647f2313c6b3")
 		)
@@ -7335,6 +7407,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 118.11 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacture Part Number" "C1206C103K5RACTU"
 			(at 118.11 137.16 0)
 			(effects
 				(font
@@ -7483,6 +7564,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" "DRV8251ADDAR"
+			(at 149.86 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "a6cc0e3e-4f94-4066-8f36-0432c733be09")
 		)
@@ -7565,6 +7655,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 134.62 264.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacture Part Number" "C1206C104K5RACTU"
 			(at 134.62 264.16 0)
 			(effects
 				(font
@@ -7708,6 +7807,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" "C1206C103K5RACTU"
+			(at 124.46 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "d72384c5-be01-4a9f-be5b-9b6353d50ec1")
 		)
@@ -7769,6 +7877,15 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 321.31 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacture Part Number" "C1206C104K5RACTU"
+			(at 321.31 124.46 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7982,6 +8099,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" "AP63205WU-7"
+			(at 287.02 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "77e05b64-1fc7-429d-a5b0-77815d92c630")
 		)
@@ -8056,6 +8182,15 @@
 			)
 		)
 		(property "Description" "Polarized capacitor"
+			(at 205.74 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacture Part Number" ""
 			(at 205.74 68.58 0)
 			(effects
 				(font
@@ -8268,6 +8403,15 @@
 					(size 1.27 1.27)
 				)
 				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacture Part Number" ""
+			(at 365.76 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
 			)
 		)
@@ -8605,6 +8749,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" ""
+			(at 53.34 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(instances
 			(project ""
 				(path "/a79d4dc0-fbfb-4acb-9ea1-84eb87509940"
@@ -8661,6 +8814,15 @@
 			)
 		)
 		(property "Description" "Mounting Hole without connection"
+			(at 53.34 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacture Part Number" ""
 			(at 53.34 187.96 0)
 			(effects
 				(font
@@ -8933,6 +9095,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" "CL32A226KAJNNNE"
+			(at 367.03 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "99cc3fee-768c-4740-af64-e2c1fe932a80")
 		)
@@ -9070,6 +9241,15 @@
 					(size 1.27 1.27)
 				)
 				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacture Part Number" ""
+			(at 115.57 204.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
 			)
 		)
@@ -9366,6 +9546,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" "C1206C104K5RACTU"
+			(at 321.31 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "ff3354bb-dc4e-4f62-ae99-a920b2bdb9eb")
 		)
@@ -9428,6 +9617,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 167.64 264.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacture Part Number" "CL31B105KBHNNNE"
 			(at 167.64 264.16 0)
 			(effects
 				(font
@@ -9776,6 +9974,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" ""
+			(at 213.36 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "527e44fe-42bb-4a7f-8aa0-37ed140d77f3")
 		)
@@ -9838,6 +10045,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 355.6 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacture Part Number" "CL32A226KAJNNNE"
 			(at 355.6 135.89 0)
 			(effects
 				(font
@@ -10183,6 +10399,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" "IFSC2020DEER4R7M01"
+			(at 328.93 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "dc08564e-0ba1-4659-be2a-99879b7c04fe")
 		)
@@ -10317,6 +10542,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" ""
+			(at 120.65 48.26 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3d670fde-0356-44df-9664-ff3a03520c14")
 		)
@@ -10387,6 +10621,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" ""
+			(at 53.34 193.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(instances
 			(project ""
 				(path "/a79d4dc0-fbfb-4acb-9ea1-84eb87509940"
@@ -10445,6 +10688,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 367.03 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacture Part Number" "CL32A226KAJNNNE"
 			(at 367.03 62.23 0)
 			(effects
 				(font
@@ -10662,6 +10914,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" ""
+			(at 381 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "fc30167b-0c77-4f49-a71f-618a26a5f858")
 		)
@@ -10720,6 +10981,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 189.23 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacture Part Number" "C1206C104K5RACTU"
 			(at 189.23 135.89 0)
 			(effects
 				(font
@@ -10862,6 +11132,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" ""
+			(at 114.3 115.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "4ac8cbd7-ca26-4b2c-9321-42a595097273")
 		)
@@ -10932,6 +11211,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" "CL31B106KAHNNNE"
+			(at 279.4 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "4f2e67d2-1e0e-4bb0-8c5d-60e9ac9832e2")
 		)
@@ -10993,6 +11281,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 195.58 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacture Part Number" "C1206C104K5RACTU"
 			(at 195.58 68.58 0)
 			(effects
 				(font
@@ -11269,6 +11566,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" ""
+			(at 53.34 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(instances
 			(project ""
 				(path "/a79d4dc0-fbfb-4acb-9ea1-84eb87509940"
@@ -11466,6 +11772,15 @@
 					(size 1.27 1.27)
 				)
 				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacture Part Number" ""
+			(at 207.01 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
 			)
 		)
@@ -11740,6 +12055,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" "DRV8251ADDAR"
+			(at 156.21 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "c50db22b-57dd-462a-8f6c-024f115ea70f")
 		)
@@ -11823,6 +12147,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 151.13 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacture Part Number" "C1206C104K5RACTU"
 			(at 151.13 71.12 0)
 			(effects
 				(font
@@ -11967,6 +12300,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" "CL31B105KBHNNNE"
+			(at 142.24 264.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e765e460-fe86-4f87-be51-8b8c1d87f003")
 		)
@@ -12101,6 +12443,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" "C1206C104K5RACTU"
+			(at 160.02 264.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "84964613-cf0e-4a12-95d4-1394b5151e05")
 		)
@@ -12171,6 +12522,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacture Part Number" ""
+			(at 130.81 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3d670fde-0356-44df-9664-ff3a03520c15")
 		)
@@ -12233,6 +12593,15 @@
 			)
 		)
 		(property "Description" "Polarized capacitor"
+			(at 199.39 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacture Part Number" ""
 			(at 199.39 135.89 0)
 			(effects
 				(font
@@ -12509,6 +12878,15 @@
 					(size 1.27 1.27)
 				)
 				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacture Part Number" "AP63205WU-7"
+			(at 287.02 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
 			)
 		)
