@@ -1,18 +1,24 @@
-"Reference","Qty","Value","Manufacture Part Number","DNP","Exclude from BOM","Exclude from Board"
-"C1,C17","2","10uF","CL31B106KAHNNNE","","",""
-"C2,C7,C8,C9,C11,C14,C15,C18","8","0.1uF","C1206C104K5RACTU","","",""
-"C3,C4,C19,C20","4","22uF","CL32A226KAJNNNE","","",""
-"C5,C13","2","10nF","C1206C103K5RACTU","","",""
-"C6,C16","2","180uF","A768KE187M1ELAE029","","",""
-"C10,C12","2","1uF","CL31B105KBHNNNE","","",""
-"F1","1","4A","0685T4000-01","","",""
-"H1,H2,H3,H4","4","MountingHole","","","Excluded from BOM",""
-"IC1,IC3","2","DRV8251ADDAR","DRV8251ADDAR","","",""
-"IC2,IC4","2","AP63205WU-7","AP63205WU-7","","",""
-"J1,J2,J3","3","691137710002","","","Excluded from BOM",""
-"J2A1","1","SSW-119-01-T-D","","","",""
-"J4","1","Conn_01x06","","","",""
-"L1,L2","2","4.7uH","IFSC2020DEER4R7M01","","",""
-"R1,R3","2","0Ω","RC1206JR-070RL","","",""
-"R2,R7","2","750Ω","RC1206FR-07750RL","","",""
-"TP1,TP2","2","5019","","DNP","Excluded from BOM",""
+Reference,Qty,Value,Manufacture Part Number,DNP,Exclude from BOM,Exclude from Board
+"C1,C17",2,10uF,CL31B106KAHNNNE,,,
+"C2,C7,C8,C9,C11,C14,C15,C18",8,0.1uF,C1206C104K5RACTU,,,
+"C3,C4,C19,C20",4,22uF,CL32A226KAJNNNE,,,
+"C5,C13",2,10nF,C1206C103K5RACTU,,,
+"C6,C16",2,180uF,A768KE187M1ELAE029,,,
+"C10,C12",2,1uF,CL31B105KBHNNNE,,,
+F1,1,4A,0685T4000-01,,,
+"H1,H2,H3,H4",4,MountingHole,,,Excluded from BOM,
+"IC1,IC3",2,DRV8251ADDAR,DRV8251ADDAR,,,
+"IC2,IC4",2,AP63205WU-7,AP63205WU-7,,,
+"J1,J2,J3",3,6.91138E+11,,,Excluded from BOM,
+J2A1,1,SSW-119-01-T-D,,,,
+J4,1,Conn_01x06,,,,
+"L1,L2",2,4.7uH,IFSC2020DEER4R7M01,,,
+"R1,R3",2,0Ω,RC1206JR-070RL,,,
+"R2,R7",2,750Ω,RC1206FR-07750RL,,,
+"TP1,TP2",2,5019,,DNP,Excluded from BOM,
+,,,,,,
+,,,,,,
+COMMENTS,,,,,,
+4A fuse may be too little for new bat therefore 5A is the new choice imo,,,,,,
+should we get the SSW-119-01-T-D?,,,,,,
+Do we need a 3v3 buck?,,,,,,

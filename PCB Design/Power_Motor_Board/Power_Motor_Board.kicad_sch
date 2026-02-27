@@ -8163,7 +8163,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder"
+		(property "Footprint" "FootPrintLibrary_ENEL300:A768KE187M1ELAE029"
 			(at 206.7052 72.39 0)
 			(effects
 				(font
@@ -12574,7 +12574,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder"
+		(property "Footprint" "FootPrintLibrary_ENEL300:A768KE187M1ELAE029"
 			(at 200.3552 139.7 0)
 			(effects
 				(font
