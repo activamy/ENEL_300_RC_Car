@@ -6784,7 +6784,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacture Part Number" ""
+		(property "Manufacture Part Number" "RC1206FR-07750RL"
 			(at 124.46 137.16 0)
 			(effects
 				(font
@@ -7217,9 +7217,9 @@
 		(at 381 49.53 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "170f577f-7e97-4837-9170-7f14d5920160")
 		(property "Reference" "TP1"
@@ -8190,7 +8190,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacture Part Number" ""
+		(property "Manufacture Part Number" "A768KE187M1ELAE029"
 			(at 205.74 68.58 0)
 			(effects
 				(font
@@ -8285,7 +8285,7 @@
 		(at 365.76 191.77 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "28c03254-7c66-43c1-8c38-2031f5ef5a1e")
@@ -9853,7 +9853,7 @@
 		(at 213.36 48.26 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "6878e790-d218-4fa8-adba-63c8364c5dd0")
@@ -10542,7 +10542,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacture Part Number" ""
+		(property "Manufacture Part Number" "RC1206JR-070RL"
 			(at 120.65 48.26 90)
 			(effects
 				(font
@@ -10791,9 +10791,9 @@
 		(at 381 123.19 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "a3d67aa8-4d10-4ef8-a917-27ffc6ce0ed5")
 		(property "Reference" "TP2"
@@ -11132,7 +11132,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacture Part Number" ""
+		(property "Manufacture Part Number" "RC1206JR-070RL"
 			(at 114.3 115.57 90)
 			(effects
 				(font
@@ -11654,7 +11654,7 @@
 		(at 207.01 115.57 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "d183c24a-751f-4107-a3be-4323cf318173")
@@ -12522,7 +12522,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacture Part Number" ""
+		(property "Manufacture Part Number" "RC1206FR-07750RL"
 			(at 130.81 69.85 0)
 			(effects
 				(font
@@ -12601,7 +12601,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacture Part Number" ""
+		(property "Manufacture Part Number" "A768KE187M1ELAE029"
 			(at 199.39 135.89 0)
 			(effects
 				(font
