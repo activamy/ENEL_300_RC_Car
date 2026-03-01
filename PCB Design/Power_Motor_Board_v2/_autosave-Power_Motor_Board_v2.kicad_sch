@@ -6293,16 +6293,6 @@
 		)
 		(uuid "8fff1e43-2534-4f81-8063-bf218e12f94f")
 	)
-	(label ""
-		(at 55.88 241.3 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "95e6b131-d43d-490f-8a42-ba8c99c24921")
-	)
 	(label "EN"
 		(at 121.92 199.39 180)
 		(effects
