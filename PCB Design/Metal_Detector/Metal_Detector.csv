@@ -1,7 +1,7 @@
 Reference,Qty,Value,Exclude from BOM,Manufacture Product Number
 BZ1,1,Buzzer,Excluded from BOM,
 C1,1,100nF,,C0805F104K1RACAUTO
-C2,1,10nF,,CHV1206N500103JCT
+C2,1,10nF,,C1206C103K5RACTU
 J2,1,Conn_01x02_Socket,Excluded from BOM,
 J3,1,Conn_01x02_Pin,Excluded from BOM,
 Q1,1,2N3904,Excluded from BOM,
