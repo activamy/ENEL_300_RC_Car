@@ -1,4 +1,4 @@
-27240257925192220
+27242034101736310
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -62418,6 +62418,13 @@ Test Point
 0
 1
 1
+FootPrintLibrary_ENEL300
+A768KE187M1ELAE029
+
+
+0
+2
+2
 FootPrintLibrary_ENEL300
 SHDR2W70P0X500_1X2_1000X750X1150P
 64900221122
