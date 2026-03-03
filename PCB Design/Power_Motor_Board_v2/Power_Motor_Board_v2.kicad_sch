@@ -6448,7 +6448,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "009e9506-aa88-48c8-8dce-33d8d3474249")
-		(property "Reference" "L1"
+		(property "Reference" "L2"
 			(at 318.77 48.26 0)
 			(effects
 				(font
@@ -6581,7 +6581,7 @@
 		(instances
 			(project "Power_Motor_Board_v2"
 				(path "/40d448a0-a1e3-45a7-b449-e8a8a995c831"
-					(reference "L1")
+					(reference "L2")
 					(unit 1)
 				)
 			)
@@ -6818,7 +6818,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0dd81a53-0b9a-40e3-8972-d99940c470af")
-		(property "Reference" "C4"
+		(property "Reference" "C17"
 			(at 262.89 64.7699 0)
 			(effects
 				(font
@@ -6881,7 +6881,7 @@
 		(instances
 			(project "Power_Motor_Board_v2"
 				(path "/40d448a0-a1e3-45a7-b449-e8a8a995c831"
-					(reference "C4")
+					(reference "C17")
 					(unit 1)
 				)
 			)
@@ -7608,7 +7608,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2314a6c2-93f9-4305-a0a5-cbc601176cc7")
-		(property "Reference" "C3"
+		(property "Reference" "C18"
 			(at 300.99 44.45 90)
 			(effects
 				(font
@@ -7669,7 +7669,7 @@
 		(instances
 			(project "Power_Motor_Board_v2"
 				(path "/40d448a0-a1e3-45a7-b449-e8a8a995c831"
-					(reference "C3")
+					(reference "C18")
 					(unit 1)
 				)
 			)
@@ -8522,13 +8522,14 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "496494b3-07a3-46b0-bbc5-6972eb2cbfd5")
-		(property "Reference" "C1"
+		(property "Reference" "C20"
 			(at 350.52 62.2299 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
 			)
 		)
 		(property "Value" "22uF"
@@ -8538,6 +8539,7 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
@@ -8585,7 +8587,7 @@
 		(instances
 			(project "Power_Motor_Board_v2"
 				(path "/40d448a0-a1e3-45a7-b449-e8a8a995c831"
-					(reference "C1")
+					(reference "C20")
 					(unit 1)
 				)
 			)
@@ -8990,7 +8992,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 			(at 113.284 188.214 90)
 			(effects
 				(font
@@ -9405,7 +9407,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "75bac568-5b4f-4c0b-bef2-a4cfec2e919d")
-		(property "Reference" "C2"
+		(property "Reference" "C19"
 			(at 339.09 62.2299 0)
 			(effects
 				(font
@@ -9468,7 +9470,7 @@
 		(instances
 			(project "Power_Motor_Board_v2"
 				(path "/40d448a0-a1e3-45a7-b449-e8a8a995c831"
-					(reference "C2")
+					(reference "C19")
 					(unit 1)
 				)
 			)
@@ -9698,7 +9700,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 			(at 95.504 48.514 90)
 			(effects
 				(font
@@ -9774,7 +9776,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 			(at 113.284 190.754 90)
 			(effects
 				(font
@@ -10033,7 +10035,7 @@
 		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "a3d67aa8-4d10-4ef8-a917-27ffc6ce0ed5")
-		(property "Reference" "TP1"
+		(property "Reference" "TP2"
 			(at 361.95 50.7999 0)
 			(effects
 				(font
@@ -10166,7 +10168,7 @@
 		(instances
 			(project "Power_Motor_Board_v2"
 				(path "/40d448a0-a1e3-45a7-b449-e8a8a995c831"
-					(reference "TP1")
+					(reference "TP2")
 					(unit 1)
 				)
 			)
@@ -10408,7 +10410,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
 			(at 89.154 115.824 90)
 			(effects
 				(font
@@ -11702,7 +11704,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f1a22f96-953f-4fdb-a2a9-8955d9a31f41")
-		(property "Reference" "R6"
+		(property "Reference" "R7"
 			(at 107.95 69.8499 0)
 			(effects
 				(font
@@ -11765,7 +11767,7 @@
 		(instances
 			(project "Power_Motor_Board_v2"
 				(path "/40d448a0-a1e3-45a7-b449-e8a8a995c831"
-					(reference "R6")
+					(reference "R7")
 					(unit 1)
 				)
 			)
@@ -11991,7 +11993,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fbef2fa4-0429-467c-88d5-a8d98a58fb18")
-		(property "Reference" "IC2"
+		(property "Reference" "IC4"
 			(at 279.4 44.45 0)
 			(effects
 				(font
@@ -12136,7 +12138,7 @@
 		(instances
 			(project "Power_Motor_Board_v2"
 				(path "/40d448a0-a1e3-45a7-b449-e8a8a995c831"
-					(reference "IC2")
+					(reference "IC4")
 					(unit 1)
 				)
 			)
