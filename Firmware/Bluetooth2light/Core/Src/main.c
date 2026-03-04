@@ -260,11 +260,12 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	if(huart -> Instance == UART4)
 	{
-		if(rxData == 'U') //79 = 'O'
+		if(rxData == 'U')
 		{
 			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
 		}
@@ -274,6 +275,22 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		}
 		HAL_UART_Receive_IT(&huart4, &rxData, 1);
 	}
+
+
+
+
+
+
+	  // Connection checker
+	//void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+	//{
+	//    if(huart->Instance == UART4)
+	//    {
+	//    	HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
+	//
+	//        HAL_UART_Receive_IT(&huart4, &rxData, 1);
+	//    }
+	//}
 }
 /* USER CODE END 4 */
 

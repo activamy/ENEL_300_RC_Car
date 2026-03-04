@@ -800,8 +800,10 @@ static void MX_GPIO_Init(void)
  8000780:	40020800 	.word	0x40020800
 
 08000784 <HAL_UART_RxCpltCallback>:
-
-/* USER CODE BEGIN 4 */
+//
+//        HAL_UART_Receive_IT(&huart4, &rxData, 1);
+//    }
+//}
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
  8000784:	b580      	push	{r7, lr}
@@ -815,7 +817,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
  8000792:	4293      	cmp	r3, r2
  8000794:	d117      	bne.n	80007c6 <HAL_UART_RxCpltCallback+0x42>
 	{
-		if(rxData == 'U') //79 = 'O'
+		if(rxData == 'U')
  8000796:	4b0f      	ldr	r3, [pc, #60]	@ (80007d4 <HAL_UART_RxCpltCallback+0x50>)
  8000798:	781b      	ldrb	r3, [r3, #0]
  800079a:	2b55      	cmp	r3, #85	@ 0x55
