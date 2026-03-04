@@ -266,7 +266,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	if(huart -> Instance == UART4)
 	{
-		HAL_UART_Transmit(&huart4, &rxData, 1, 10);
+		// Forward received byte to PC via USB (USART2)
+		HAL_UART_Transmit(&huart2, &rxData, 1, 10);
 
 		if(rxData == 'U')
 		{
