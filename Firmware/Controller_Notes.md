@@ -62,7 +62,85 @@ For the right button red to black outputs '4' and black to red outputs '3'
 
 
 
-**-------Android Studio Notes-------**
+**-------Android Studio Notes------**
+
+Android tab is what displays all of the main components (?)
+
+
+
+* Manifest folder: Has **AndroidManifest.xml** file. (xml = Extensible Markup Language, data is stored in a text file. CSS positions (fancy ups) elements in a xml file.)
+
+&nbsp;	- AndroidManifest.xml declares permissions, app activities and how the app starts, it's the 'heart' of the app, providing all the essential
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

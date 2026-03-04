@@ -8,5 +8,5 @@ All testing is done on a software controller, specifically the Bluetooth Control
 
 The app will most likely be created on Android Studio. 
 
-* Android 8+ ()
+* Developed for Android 8+ ()
 * 

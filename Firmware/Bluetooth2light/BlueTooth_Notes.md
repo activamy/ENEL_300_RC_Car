@@ -24,7 +24,7 @@ if(huart->Instance == \[UART Line])
 
 **\*\*\*Make sure:**
 
-* *Global interrupt is enabled* on the UART/USART line
+* *Global interrupt is enabled* on the UART/USART line or even in all lines and stuff
 * Baud rate is set to 9600bit/s
 * Tx -> Rx and Rx -> Tx
 * Call HAL\_UART\_Receive\_IT(\&huart4, \&rxData, 1); again in your main code loop so it restarts
