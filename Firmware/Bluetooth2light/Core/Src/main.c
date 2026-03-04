@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include <stdio.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -265,6 +266,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	if(huart -> Instance == UART4)
 	{
+		HAL_UART_Transmit(&huart4, &rxData, 1, 10);
+
 		if(rxData == 'U')
 		{
 			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
@@ -274,6 +277,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_RESET);
 		}
 		HAL_UART_Receive_IT(&huart4, &rxData, 1);
+
 	}
 
 
