@@ -264,11 +264,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	if(huart -> Instance == UART4)
 	{
-		if(rxData == 79) //79 = 'O'
+		if(rxData == 'U') //79 = 'O'
 		{
 			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
 		}
-		else if (rxData == 88)
+		else if (rxData == 'L')
 		{
 			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_RESET);
 		}
