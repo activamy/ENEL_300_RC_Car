@@ -821,9 +821,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
  800079a:	2b4f      	cmp	r3, #79	@ 0x4f
  800079c:	d105      	bne.n	80007aa <HAL_UART_RxCpltCallback+0x26>
 		{
-			HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
  800079e:	2201      	movs	r2, #1
- 80007a0:	2120      	movs	r1, #32
+ 80007a0:	2140      	movs	r1, #64	@ 0x40
  80007a2:	480d      	ldr	r0, [pc, #52]	@ (80007d8 <HAL_UART_RxCpltCallback+0x54>)
  80007a4:	f000 fcee 	bl	8001184 <HAL_GPIO_WritePin>
  80007a8:	e008      	b.n	80007bc <HAL_UART_RxCpltCallback+0x38>
@@ -834,9 +834,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
  80007ae:	2b58      	cmp	r3, #88	@ 0x58
  80007b0:	d104      	bne.n	80007bc <HAL_UART_RxCpltCallback+0x38>
 		{
-			HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_RESET);
  80007b2:	2200      	movs	r2, #0
- 80007b4:	2120      	movs	r1, #32
+ 80007b4:	2140      	movs	r1, #64	@ 0x40
  80007b6:	4808      	ldr	r0, [pc, #32]	@ (80007d8 <HAL_UART_RxCpltCallback+0x54>)
  80007b8:	f000 fce4 	bl	8001184 <HAL_GPIO_WritePin>
 		}
