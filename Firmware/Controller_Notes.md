@@ -37,6 +37,8 @@ For the right button red to black outputs '4' and black to red outputs '3'
 
 
 
+
+
 **-------Thoughts on how to implement-------**
 
 (03/03/26) Initial ideas on how to proceed with this information:
@@ -46,9 +48,21 @@ For the right button red to black outputs '4' and black to red outputs '3'
 * Don't know if backwards turning will be used, but same logic applied
 * 'L' and 'R' aren't really useful as of the moment- or acc maybe it is :thinking:
 
-&nbsp;	- Good for on the spot turning, especially for distance sensing, if we have to drive the car over, spot turning will allow us to move as precisely (as the player) can move
+ 	- Good for on the spot turning, especially for distance sensing, if we have to drive the car over, spot turning will allow us to move as precisely (as the player) can move
 
 * Left button ('1', '2') can control left headlights and vice versa for right button for right lights
 
-&nbsp;	- OR one for headlights and one for rear lights :D
+ 	- OR one for headlights and one for rear lights :D
+
+
+
+
+
+
+
+
+
+**-------Android Studio Notes-------**
+
+
 
