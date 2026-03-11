@@ -1,0 +1,5 @@
+﻿Designator,Footprint,Quantity,Value,LCSC Part #
+C1,0805,1,100nF,
+C2,1206,1,10nF,
+"R1, R3",1206,2,1kΩ,
+R2,1206,1,33kΩ,
