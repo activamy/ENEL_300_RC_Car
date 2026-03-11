@@ -5362,6 +5362,16 @@
 	)
 	(wire
 		(pts
+			(xy 299.72 157.48) (xy 317.5 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7266e810-1388-4136-9ed4-d5bc9ab38016")
+	)
+	(wire
+		(pts
 			(xy 292.1 52.07) (xy 297.18 52.07)
 		)
 		(stroke
@@ -6282,16 +6292,6 @@
 			(justify left bottom)
 		)
 		(uuid "8fff1e43-2534-4f81-8063-bf218e12f94f")
-	)
-	(label ""
-		(at 55.88 241.3 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "95e6b131-d43d-490f-8a42-ba8c99c24921")
 	)
 	(label "EN"
 		(at 121.92 199.39 180)
@@ -9199,7 +9199,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+5V"
+		(property "Value" "5V_out"
 			(at 85.09 184.1499 0)
 			(effects
 				(font
@@ -9804,10 +9804,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "90c154cd-533c-4bf4-94ad-833281696979")
+			(uuid "90c154cd-533c-4bf4-94ad-83328169697a")
 		)
 		(pin "2"
-			(uuid "9b0d70d5-70e9-4592-8c73-ca1cc5523bd7")
+			(uuid "9b0d70d5-70e9-4592-8c73-ca1cc5523bd8")
 		)
 		(instances
 			(project ""
@@ -9910,12 +9910,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "VDD"
-			(at 106.68 237.49 0)
+		(property "Value" "5V_out"
+			(at 109.22 241.2999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -10312,6 +10313,72 @@
 			(project "Power_Motor_Board_v2"
 				(path "/40d448a0-a1e3-45a7-b449-e8a8a995c831"
 					(reference "#PWR016")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VDD")
+		(at 317.5 157.48 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b0d27cf4-b582-4b92-a334-fb9ef1c3fb52")
+		(property "Reference" "#PWR05"
+			(at 317.5 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "5V_out"
+			(at 317.5 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 317.5 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 317.5 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
+			(at 317.5 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "673b510c-58d2-4917-8721-533a71001441")
+		)
+		(instances
+			(project ""
+				(path "/40d448a0-a1e3-45a7-b449-e8a8a995c831"
+					(reference "#PWR05")
 					(unit 1)
 				)
 			)
