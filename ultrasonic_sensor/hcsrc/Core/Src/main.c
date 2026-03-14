@@ -62,7 +62,7 @@ static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN 0 */
 int __io_putchar(int ch)
 {
-    HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
+    HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, HAL_MAX_DELAY); //serial monitor
     return ch;
 }
 /* USER CODE END 0 */
@@ -103,8 +103,25 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HCSR04_Init();     /* Start the µs timer */
 
-	float    distance_cm;
-	HCSR04_Status status;
+  float    distance_cm;
+  HCSR04_Status status;
+  int filter_size = 10;
+  float dist_arr[10] = {0,0,0,0,0,0,0,0,0,0};
+//  float dist_arr[6] = {0,0,0,0,0,0};
+  float distance_filt;
+
+  void filter(float* arr, float new){
+		  distance_filt = new;
+
+		  for (int i = filter_size-1; i>0;i--){
+			  arr[i]= arr[i-1];
+			  distance_filt += arr[i-1];
+		  }
+		  arr[0]=new;
+		  //printf("%.1f ; %.1f ; %.1f  \r\n",arr[0], arr[1], arr[2]);
+		  distance_filt/=filter_size;
+
+ };
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -114,18 +131,22 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  status = HCSR04_Read(&distance_cm);
+	  status = HCSR04_Read(&distance_cm);  //assign pointer to distance
+
+
 
 	  if (status == HCSR04_OK)
 	  {
-		  printf("Distance: %.1f cm\r\n", distance_cm);
+		  filter (dist_arr, distance_cm);
+		  printf("Distance: %.1f cm, filtered: %.1f  \r\n", distance_cm,distance_filt);
 	  }
 	  else
 	  {
-		  printf("Sensor timeout — object out of range or missing\r\n");
+		  printf("%f\r\n",0);
+//		  printf("Sensor timeout — object out of range or missing\r\n");
 	  }
 
-	  HAL_Delay(200);   /* Measure ~5 times per second */
+	  HAL_Delay(200);   /* Measure ~2 times per second */
   }
   /* USER CODE END 3 */
 }

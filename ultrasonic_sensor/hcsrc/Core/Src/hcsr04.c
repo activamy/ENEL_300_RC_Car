@@ -23,7 +23,7 @@ HCSR04_Status HCSR04_Read(float *distance_cm)
 
     /* ── 1. Send 10 µs trigger pulse ──────────────────────────────── */
     HAL_GPIO_WritePin(HCSR04_TRIG_PORT, HCSR04_TRIG_PIN, GPIO_PIN_RESET);
-    delay_us(2);                              /* ensure line is LOW first */
+    delay_us(2);                               /* ensure line is LOW first */
 
     HAL_GPIO_WritePin(HCSR04_TRIG_PORT, HCSR04_TRIG_PIN, GPIO_PIN_SET);
     delay_us(10);                             /* ≥10 µs HIGH pulse        */
@@ -35,7 +35,7 @@ HCSR04_Status HCSR04_Read(float *distance_cm)
     {
         if ((get_timer_count() - t_start) >= HCSR04_TIMEOUT_US)
         {
-            return HCSR04_TIMEOUT;
+            return HCSR04_TIMEOUT; //if echo never goes high, timeout
         }
     }
 
