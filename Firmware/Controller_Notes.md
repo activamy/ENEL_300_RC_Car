@@ -55,7 +55,11 @@ For the right button red to black outputs '4' and black to red outputs '3'
  	- OR one for headlights and one for rear lights :D
 
 
+(03/15/26) Ideas for MIT AI as of a successful bluetooth configuration:
 
+* Don't need a continueous letter spamming in the terminal, there's options for sending a command when the button is pressed down and then on for released
+* add another image when pressed image (ie: gets darker) to prove the button is pressed down
+* clean up screens to look nicer too!
 
 
 
@@ -76,36 +80,9 @@ Android tab is what displays all of the main components (?)
 
 
 
+**-------MIT APP INVENTOR NOTES-------**
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* Virtual Screens (using multiple layouts as a 'screen' and a button to change between visibility) are usually better than actually screens
 
 
 
