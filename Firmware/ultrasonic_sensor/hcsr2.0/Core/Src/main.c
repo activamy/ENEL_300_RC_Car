@@ -142,9 +142,8 @@ int main(void)
   float    distance_cm;
   HCSR04_Status status;
 
-  int filter_size = 10;
-  float dist_arr[10] = {0,0,0,0,0,0,0,0,0,0};
-//  float dist_arr[6] = {0,0,0,0,0,0};
+  int filter_size = 5;
+  float dist_arr[5] = {0,0,0,0,0};
   float distance_filt;
 
   void filter(float* arr, float new){
