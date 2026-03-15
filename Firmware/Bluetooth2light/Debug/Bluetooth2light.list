@@ -824,10 +824,10 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
  800079c:	4811      	ldr	r0, [pc, #68]	@ (80007e4 <HAL_UART_RxCpltCallback+0x60>)
  800079e:	f001 fb4b 	bl	8001e38 <HAL_UART_Transmit>
 
-		if(rxData == 'U')
+		if(rxData == 'O')
  80007a2:	4b0f      	ldr	r3, [pc, #60]	@ (80007e0 <HAL_UART_RxCpltCallback+0x5c>)
  80007a4:	781b      	ldrb	r3, [r3, #0]
- 80007a6:	2b55      	cmp	r3, #85	@ 0x55
+ 80007a6:	2b4f      	cmp	r3, #79	@ 0x4f
  80007a8:	d105      	bne.n	80007b6 <HAL_UART_RxCpltCallback+0x32>
 		{
 			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
@@ -837,10 +837,10 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
  80007b0:	f000 fcf0 	bl	8001194 <HAL_GPIO_WritePin>
  80007b4:	e008      	b.n	80007c8 <HAL_UART_RxCpltCallback+0x44>
 		}
-		else if (rxData == 'L')
+		else if (rxData == 'F')
  80007b6:	4b0a      	ldr	r3, [pc, #40]	@ (80007e0 <HAL_UART_RxCpltCallback+0x5c>)
  80007b8:	781b      	ldrb	r3, [r3, #0]
- 80007ba:	2b4c      	cmp	r3, #76	@ 0x4c
+ 80007ba:	2b46      	cmp	r3, #70	@ 0x46
  80007bc:	d104      	bne.n	80007c8 <HAL_UART_RxCpltCallback+0x44>
 		{
 			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_RESET);

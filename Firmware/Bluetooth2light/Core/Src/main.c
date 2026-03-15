@@ -268,11 +268,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		// Forward received byte to PC via USB (USART2)
 		HAL_UART_Transmit(&huart2, &rxData, 1, 10);
 
-		if(rxData == 'U')
+		if(rxData == 'O')
 		{
 			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
 		}
-		else if (rxData == 'L')
+		else if (rxData == 'F')
 		{
 			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_RESET);
 		}
