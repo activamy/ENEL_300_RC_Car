@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "FootPrintLibrary_ENEL300")(type "KiCad")(uri "${KIPRJMOD}/FootPrintLibrary_ENEL300.pretty")(options "")(descr ""))
+)
