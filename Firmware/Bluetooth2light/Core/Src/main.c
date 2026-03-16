@@ -268,15 +268,43 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		// Forward received byte to PC via USB (USART2)
 		HAL_UART_Transmit(&huart2, &rxData, 1, 10);
 
-		if(rxData == 'O')
-		{
+		switch(rxData) {
+
+		case 'O':
 			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
-		}
-		else if (rxData == 'F')
-		{
+			break;
+
+		case 'F':
 			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_RESET);
+			break;
+
+//		case 'U':
+//			motor_up();
+
+//		case 'D':
+//			motor_down();
+
+//		case 'K': // forwards and left
+//			motor_up_left();
+//
+//		case '': // forwards and right
+//			motor_up_right();
+//
+//		case '': // back and left
+//			motor_down_left();
+//
+//		case '': // back and left
+//			motor_down_left();
+
+//		case '': // left
+//			motor_down_left();
+
+//		case '': // left
+//			motor_down_left();
 		}
-		HAL_UART_Receive_IT(&huart4, &rxData, 1);
+
+		HAL_UART_Receive_IT(&huart4, &rxData, 1); // what does this do again????
+
 
 	}
 
