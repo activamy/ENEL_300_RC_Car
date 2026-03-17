@@ -19,8 +19,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "motor.h"
 
 /* USER CODE END Includes */
 
@@ -94,62 +96,51 @@ int main(void)
   MX_TIM1_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-//int direction = 1;
 
 
-void Set_Motor_Speed(int16_t speed) {
-    // Speed range: -100 to 100
-    uint32_t pulse_value = (abs(speed) * __HAL_TIM_GET_AUTORELOAD(&htim1)) / 100;
-
-    if (speed > 0) {
-        // Forward: Pulse IN1, keep IN2 Low
-        __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, pulse_value);
-        __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, 0);
-    }
-    else if (speed < 0) {
-        // Reverse: Keep IN1 Low, pulse IN2
-        __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
-        __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, pulse_value);
-    }
-    else {
-        // Stop: Both Low (Low-Power Sleep Mode after 1ms)
-        __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
-        __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, 0);
-    }
-}
+//
+//void Set_Motor_Speed(int16_t speed) {
+//    // Speed range: -100 to 100
+//    uint32_t pulse_value = (abs(speed) * __HAL_TIM_GET_AUTORELOAD(&htim1)) / 100;
+//
+//
+////    TIM1->CCR1=300;
+//    if (speed > 0) {
+//        // Forward: Pulse IN1, keep IN2 Low
+//        __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, pulse_value);
+//        __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, 0);
+//    }
+//    else if (speed < 0) {
+//        // Reverse: Keep IN1 Low, pulse IN2
+//        __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+//        __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, pulse_value);
+//    }
+//    else {
+//        // Stop: Both Low (Low-Power Sleep Mode after 1ms)
+//        __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+//        __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, 0);
+//    }
+//}
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  Motor_Init();
+
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//	  TIM1->CCR1=300;
-//	  HAL_TIM_PWM_Start (&htim1, TIM_CHANNEL_3);
-//	  HAL_TIM_PWM_Start (&htim1, TIM_CHANNEL_4);
-//	  HAL_Delay(3000);
-//	  Set_Motor_Speed(40);
-//	  	  HAL_Delay(3000);
-//	  Set_Motor_Speed(-40);
-//	  HAL_Delay(3000);
-//	  Set_Motor_Speed(0);
-//	  	  HAL_Delay(3000);
 
-	  	 TIM1->CCR1=300;
-		 HAL_TIM_PWM_Start (&htim1, TIM_CHANNEL_3);
-		 HAL_TIM_PWM_Start (&htim1, TIM_CHANNEL_4);
-		 Set_Motor_Speed(40);
-		 HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 1);
-		 HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_RESET);
-		 HAL_Delay(3000);
-		 HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET);
-		 HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 1);
-		 HAL_Delay(3000);
-		 Set_Motor_Speed(0);
-		 HAL_Delay(3000);
+
+	  Set_Motor_Speed(0, RED, STRAIGHT);
+	  Set_Motor_Speed(0, RED, LEFT);
+	  Set_Motor_Speed(0, RED, RIGHT);
+
+
+
 
   }
   /* USER CODE END 3 */
@@ -326,7 +317,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4|GPIO_PIN_5, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
@@ -341,8 +332,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB4 PB5 */
-  GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5;
+  /*Configure GPIO pins : PB10 PB3 PB4 PB5 */
+  GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
