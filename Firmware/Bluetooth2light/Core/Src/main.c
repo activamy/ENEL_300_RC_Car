@@ -362,7 +362,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 			break;
 
 		case 'U':
-			Set_Motor_Speed(0, RED, STRAIGHT);
+			Set_Motor_Speed(100, RED, STRAIGHT);
 			break;
 
 		case 'D':
@@ -386,11 +386,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 			break;
 
 		case 'L': // left
-			Set_Motor_Speed(100, RED, LEFT);
+			Set_Motor_Speed(0, RED, LEFT);
 			break;
 
 		case 'R': // right
-			Set_Motor_Speed(100, RED, RIGHT);
+			Set_Motor_Speed(0, RED, RIGHT);
 			break;
 		case 'S':
 			Set_Motor_Speed(0, RED, STRAIGHT);
