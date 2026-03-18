@@ -454,10 +454,10 @@ int main(void)
  800059e:	e039      	b.n	8000614 <main+0x120>
 
 	  		case 'U':
-	  			Set_Motor_Speed(0, RED, STRAIGHT);
+	  			Set_Motor_Speed(100, RED, STRAIGHT);
  80005a0:	2202      	movs	r2, #2
  80005a2:	2100      	movs	r1, #0
- 80005a4:	2000      	movs	r0, #0
+ 80005a4:	2064      	movs	r0, #100	@ 0x64
  80005a6:	f000 fa5f 	bl	8000a68 <Set_Motor_Speed>
 	  			break;
  80005aa:	e033      	b.n	8000614 <main+0x120>
@@ -508,19 +508,19 @@ int main(void)
  80005ec:	e012      	b.n	8000614 <main+0x120>
 
 	  		case 'L': // left
-	  			Set_Motor_Speed(100, RED, LEFT);
+	  			Set_Motor_Speed(0, RED, LEFT);
  80005ee:	2200      	movs	r2, #0
  80005f0:	2100      	movs	r1, #0
- 80005f2:	2064      	movs	r0, #100	@ 0x64
+ 80005f2:	2000      	movs	r0, #0
  80005f4:	f000 fa38 	bl	8000a68 <Set_Motor_Speed>
 	  			break;
  80005f8:	e00c      	b.n	8000614 <main+0x120>
 
 	  		case 'R': // right
-	  			Set_Motor_Speed(100, RED, RIGHT);
+	  			Set_Motor_Speed(0, RED, RIGHT);
  80005fa:	2201      	movs	r2, #1
  80005fc:	2100      	movs	r1, #0
- 80005fe:	2064      	movs	r0, #100	@ 0x64
+ 80005fe:	2000      	movs	r0, #0
  8000600:	f000 fa32 	bl	8000a68 <Set_Motor_Speed>
 	  			break;
  8000604:	e006      	b.n	8000614 <main+0x120>
@@ -1305,9 +1305,9 @@ void Set_Motor_Speed(int16_t speed ,  Motor_Driver driver, Direction dir) {
  8000a94:	fba2 2303 	umull	r2, r3, r2, r3
  8000a98:	095b      	lsrs	r3, r3, #5
  8000a9a:	60fb      	str	r3, [r7, #12]
-    MOTOR_TIMER_INSTANCE->CCR1=300;
+    MOTOR_TIMER_INSTANCE->CCR1=499;
  8000a9c:	4b71      	ldr	r3, [pc, #452]	@ (8000c64 <Set_Motor_Speed+0x1fc>)
- 8000a9e:	f44f 7296 	mov.w	r2, #300	@ 0x12c
+ 8000a9e:	f240 12f3 	movw	r2, #499	@ 0x1f3
  8000aa2:	635a      	str	r2, [r3, #52]	@ 0x34
 
 
@@ -1347,13 +1347,13 @@ void Set_Motor_Speed(int16_t speed ,  Motor_Driver driver, Direction dir) {
  8000ad4:	793b      	ldrb	r3, [r7, #4]
  8000ad6:	2b01      	cmp	r3, #1
  8000ad8:	d10c      	bne.n	8000af4 <Set_Motor_Speed+0x8c>
-					__HAL_TIM_SET_COMPARE(&MOTOR_TIMER, MOTOR1_FCHANNEL, pulse_value/30);
+					__HAL_TIM_SET_COMPARE(&MOTOR_TIMER, MOTOR1_FCHANNEL, pulse_value/3);
  8000ada:	4b60      	ldr	r3, [pc, #384]	@ (8000c5c <Set_Motor_Speed+0x1f4>)
  8000adc:	681b      	ldr	r3, [r3, #0]
  8000ade:	68fa      	ldr	r2, [r7, #12]
  8000ae0:	4961      	ldr	r1, [pc, #388]	@ (8000c68 <Set_Motor_Speed+0x200>)
  8000ae2:	fba1 1202 	umull	r1, r2, r1, r2
- 8000ae6:	0912      	lsrs	r2, r2, #4
+ 8000ae6:	0852      	lsrs	r2, r2, #1
  8000ae8:	63da      	str	r2, [r3, #60]	@ 0x3c
 					__HAL_TIM_SET_COMPARE(&MOTOR_TIMER, MOTOR1_BCHANNEL, pulse_value);
  8000aea:	4b5c      	ldr	r3, [pc, #368]	@ (8000c5c <Set_Motor_Speed+0x1f4>)
@@ -1367,13 +1367,13 @@ void Set_Motor_Speed(int16_t speed ,  Motor_Driver driver, Direction dir) {
  8000af6:	681b      	ldr	r3, [r3, #0]
  8000af8:	68fa      	ldr	r2, [r7, #12]
  8000afa:	63da      	str	r2, [r3, #60]	@ 0x3c
-					__HAL_TIM_SET_COMPARE(&MOTOR_TIMER, MOTOR1_BCHANNEL, pulse_value/30);
+					__HAL_TIM_SET_COMPARE(&MOTOR_TIMER, MOTOR1_BCHANNEL, pulse_value/3);
  8000afc:	4b57      	ldr	r3, [pc, #348]	@ (8000c5c <Set_Motor_Speed+0x1f4>)
  8000afe:	681b      	ldr	r3, [r3, #0]
  8000b00:	68fa      	ldr	r2, [r7, #12]
  8000b02:	4959      	ldr	r1, [pc, #356]	@ (8000c68 <Set_Motor_Speed+0x200>)
  8000b04:	fba1 1202 	umull	r1, r2, r1, r2
- 8000b08:	0912      	lsrs	r2, r2, #4
+ 8000b08:	0852      	lsrs	r2, r2, #1
  8000b0a:	641a      	str	r2, [r3, #64]	@ 0x40
 				}
 				HAL_GPIO_WritePin(MOTOR_PORT, MOTOR1_F_PIN, 1);
@@ -1562,7 +1562,7 @@ void Set_Motor_Speed(int16_t speed ,  Motor_Driver driver, Direction dir) {
  8000c5c:	20000028 	.word	0x20000028
  8000c60:	51eb851f 	.word	0x51eb851f
  8000c64:	40010000 	.word	0x40010000
- 8000c68:	88888889 	.word	0x88888889
+ 8000c68:	aaaaaaab 	.word	0xaaaaaaab
  8000c6c:	40020400 	.word	0x40020400
 
 08000c70 <HAL_MspInit>:
