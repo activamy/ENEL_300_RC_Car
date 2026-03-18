@@ -43,7 +43,7 @@ void Set_Motor_Speed(int16_t speed ,  Motor_Driver driver, Direction dir) {
 				HAL_GPIO_WritePin(MOTOR_PORT, MOTOR1_B_PIN, 0);
 				HAL_GPIO_WritePin(MOTOR_PORT, MOTOR2_F_PIN, 1);
 				HAL_GPIO_WritePin(MOTOR_PORT, MOTOR2_B_PIN, 0);
-				HAL_Delay(time);
+//				HAL_Delay(time);
 
 			}
 			else if (speed < 0) {
@@ -62,7 +62,7 @@ void Set_Motor_Speed(int16_t speed ,  Motor_Driver driver, Direction dir) {
 				HAL_GPIO_WritePin(MOTOR_PORT, MOTOR1_B_PIN, 1);
 				HAL_GPIO_WritePin(MOTOR_PORT, MOTOR2_F_PIN, 0);
 				HAL_GPIO_WritePin(MOTOR_PORT, MOTOR2_B_PIN, 1);
-				HAL_Delay(time);
+//				HAL_Delay(time);
 
 			}
 			else {
@@ -86,7 +86,7 @@ void Set_Motor_Speed(int16_t speed ,  Motor_Driver driver, Direction dir) {
 					HAL_GPIO_WritePin(MOTOR_PORT, MOTOR2_F_PIN, 0);
 					HAL_GPIO_WritePin(MOTOR_PORT, MOTOR2_B_PIN, 1);
 				}
-				HAL_Delay(time);
+//				HAL_Delay(time);
 			}
 			// ADD STOP BOTH LOW??(Low-Power Sleep Mode after 1ms)
 		}
