@@ -5,7 +5,7 @@
 #include <string.h>
 #include <stdio.h>
 
-#define LCD_I2C_ADDR   (0x27 << 1)  // Change to 0x3F if needed
+#define LCD_I2C_ADDR   (0x27 << 1)  // Change to 0x3F/0x27 if needed
 #define LCD_COLS       16
 #define LCD_ROWS       2
 

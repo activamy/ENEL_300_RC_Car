@@ -56,9 +56,9 @@ UART_HandleTypeDef huart2;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_I2C1_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_I2C1_Init(void);
 /* USER CODE BEGIN PFP */
 //
 /* USER CODE END PFP */
@@ -101,9 +101,9 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_I2C1_Init();
   MX_TIM2_Init();
   MX_USART2_UART_Init();
+  MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
   HCSR04_Init();     /* Start the µs timer */
   ///
@@ -113,19 +113,21 @@ int main(void)
 
    HAL_StatusTypeDef statusl;
 
-   // Try to connect to the LCD (3 trials, 10ms timeout)
-   statusl = HAL_I2C_IsDeviceReady(&hi2c1, LCD_ADDR, 3, 10);
+   statusl = HAL_I2C_IsDeviceReady(&hi2c1,LCD_ADDR, 3, 10);
+//	}
+      if (statusl == HAL_OK) {
+          // SUCCESS: The STM32 found the LCD
+    	  LCD_Init(&hi2c1);
+    	  statusl = HAL_I2C_IsDeviceReady(&hi2c1,LCD_ADDR, 3, 10);
+          printf("System Online");
+      } else {
+          // FAILURE: The STM32 cannot find the device
+          // Trigger an error LED or serial print
+          Error_Handler();
+          statusl = HAL_I2C_IsDeviceReady(&hi2c1,LCD_ADDR, 3, 10);
+      }
 
-   if (statusl == HAL_OK) {
-       // SUCCESS: The STM32 found the LCD
-	   LCD_Init(&hi2c1);
-       printf("System Online");
-   } else {
-       // FAILURE: The STM32 cannot find the device
-       // Trigger an error LED or serial print
-       Error_Handler();
-   }
-   ///
+
 
 
 
@@ -144,6 +146,7 @@ int main(void)
 
   int filter_size = 5;
   float dist_arr[5] = {0,0,0,0,0};
+//  float dist_arr[6] = {0,0,0,0,0,0};
   float distance_filt;
 
   void filter(float* arr, float new){
@@ -249,11 +252,11 @@ static void MX_I2C1_Init(void)
 {
 
   /* USER CODE BEGIN I2C1_Init 0 */
-//
+
   /* USER CODE END I2C1_Init 0 */
 
   /* USER CODE BEGIN I2C1_Init 1 */
-//
+
   /* USER CODE END I2C1_Init 1 */
   hi2c1.Instance = I2C1;
   hi2c1.Init.ClockSpeed = 100000;
@@ -269,7 +272,7 @@ static void MX_I2C1_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN I2C1_Init 2 */
-//
+
   /* USER CODE END I2C1_Init 2 */
 
 }
