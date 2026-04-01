@@ -3,139 +3,188 @@ import socket
 from time import sleep
 import machine
 
-# Yes, these could be in another file. But on the Pico! So no more secure. :)
-ssid = 'Your_Network_Name'
-password = 'Your_WiFi_Password'
+# private imports
+import motor
 
-def move_forward():
-    print ("Forward")
-    
-def move_backward():
-    print ("Backward")
-    
-def move_stop():
-    print ("Stop")
-    
-def move_left():
-    print ("Left")
-    
-def move_right():
-    print ("Right")
-    
-def connect():
-    #Connect to WLAN
-    wlan = network.WLAN(network.STA_IF)
-    wlan.active(True)
-    wlan.connect(ssid, password)
-    while wlan.isconnected() == False:
-        print('Waiting for connection...')
-        sleep(1)
-    ip = wlan.ifconfig()[0]
-    print(f'Connected on {ip}')
-    return ip
-    
-def open_socket(ip):
-    # Open a socket
-    address = (ip, 80)
-    connection = socket.socket()
-    connection.bind(address)
-    connection.listen(1)
-    return connection
+# leds
+led_pin = machine.Pin('LED', machine.Pin.OUT)
+headlight = machine.Pin(0, machine.Pin.OUT)				#HEYHEYHEY CHANGE THE PINS SIL VOUS PLEASE
 
+headlight.off()
+# ------------------------
+# Access point setup
+# ------------------------
+def start_ap():
+    access_point = network.WLAN(network.AP_IF)
+    access_point.active(True)
+
+    access_point.config(essid='Team37Network', password='Team37UNOS')
+
+    print("Access Point Started")
+    print("IP:", access_point.ifconfig()[0])
+
+    led_pin.on()  # turn on LED when ready
+    sleep(1)
+    #return ip
+    return access_point.ifconfig()[0]
+
+# ------------------------
+# HTML Page
+# ------------------------
 def webpage():
-    #Template HTML
-    html = f"""
-            <!DOCTYPE html>
-            <html>
-            <head>
-            <title>Zumo Robot Control</title>
-            </head>
-            <center><b>
-            <form action="./forward">
-            <input type="submit" value="Forward" style="height:120px; width:120px" />
-            </form>
-            <table><tr>
-            <td><form action="./left">
-            <input type="submit" value="Left" style="height:120px; width:120px" />
-            </form></td>
-            <td><form action="./stop">
-            <input type="submit" value="Stop" style="height:120px; width:120px" />
-            </form></td>
-            <td><form action="./right">
-            <input type="submit" value="Right" style="height:120px; width:120px" />
-            </form></td>
-            </tr></table>
-            <form action="./back">
-            <input type="submit" value="Back" style="height:120px; width:120px" />
-            </form>
-            </body>
-            </html>
-            """
-    return str(html)
 
-def serve(connection):
-    #Start web server
+    html = """HTTP/1.1 200 OK
+
+<!DOCTYPE html>
+        <html>
+    
+    <head>
+		<style>
+			body 	{background-color: pink;
+    				 text-align: center;}
+			h1   	{color: black;
+            		 font-size: 75px;}
+                     
+    		button	{background-color: white;
+          			 padding: 50px 40px;
+             		 text-align: center;
+         		     border-radius: 4px;
+          	 		 margin: 3px;}
+  		</style>
+	</head>
+
+
+    <body>
+    	<h1>Remote Control</h1>
+    		<button id="headlight" onclick="toggleLight()"
+        >Light</button>          
+    	<br><br>
+    		<button 
+                ontouchstart="pressBtn(this, '/forward')" 
+                ontouchend="releaseBtn(this)"
+              >Forward</button>
+
+		<br>
+            <button 
+              ontouchstart="pressBtn(this, '/left')" 
+              ontouchend="releaseBtn(this)"
+            >Left</button>
+
+            <button 
+              ontouchstart="pressBtn(this, '/right')" 
+              ontouchend="releaseBtn(this)"
+            >Right</button>
+		<br>
+            <button 
+              ontouchstart="pressBtn(this, '/backward')" 
+              ontouchend="releaseBtn(this)"
+            >Backward</button>
+    
+    </body>
+    
+    <script>
+      let headLightsOn = false;
+
+      function toggleLight() {
+          const btn = document.getElementById("headlight");
+
+          headLightsOn = !headLightsOn;
+
+          if (headLightsOn) {
+              btn.style.backgroundColor = "yellow";
+          } else {
+              btn.style.backgroundColor = "white";
+          }
+
+          fetch("/led");
+      }
+
+      // PRESS
+      function pressBtn(btn, route) {
+          btn.style.backgroundColor = "lightgreen";
+          fetch(route);
+      }
+
+      // RELEASE
+      function releaseBtn(btn) {
+          btn.style.backgroundColor = "white";
+          fetch("/stop");
+      }
+      </script>
+    </html>
+
+
+    """
+
+    return html
+
+
+# ------------------------
+# Socket
+# ------------------------
+def start_server(ip):
+    
+    # IP Address
+    address = socket.getaddrinfo(ip, 80)[0][-1]  # position 0,-1 is where the address is
+    
+    # Create socket and HTTP request
+    s = socket.socket()
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # 👈 ADD THIS
+    s.bind(address)
+    s.listen(1)
+
+    print("Server running at http://" + ip)
+    led_pin.off()
+
     while True:
-        client = connection.accept()[0]
-        request = client.recv(1024)
-        request = str(request)
         try:
-            request = request.split()[1]
-        except IndexError:
-            pass
-        if request == '/forward?':
-            move_forward()
-        elif request =='/left?':
-            move_left()
-        elif request =='/stop?':
-            move_stop()
-        elif request =='/right?':
-            move_right()
-        elif request =='/back?':
-            move_backward()
-        html = webpage()
-        client.send(html)
-        client.close()
+            client, addr = s.accept()
+            print("Client connected from", addr)
+            
+            request = client.recv(1024).decode()
+            # recv(1024) means it'll receive up to 1024 bytes
+            # decode turns bytes into a string
+            print(request)
 
-try:
-    ip = connect()
-    connection = open_socket(ip)
-    serve(connection)
-except KeyboardInterrupt:
-    machine.reset()
+            # command functions
+            if '/forward' in request:
+                motor.move_forward()
+                print('f')
+            elif '/left' in request:
+                motor.move_left()
+                print('l')
+            elif '/right' in request:
+                motor.move_right()
+                print('r')
+            elif '/backward' in request:
+                motor.move_backward()
+                print('b')
+            elif '/stop' in request:
+                motor.stop()
+                print('s')
+            elif '/led' in request:
+                headlight.toggle()
+                print('led')
+            
+            response = webpage()
+            client.send(response)
+            client.close()	# must close after opening, it's like opening a door to answer someone and then closing
+        
+        except Exception as e:
+            print("Error:", e)
+            client.close()
+            
+        finally:
+            if client:
+                try:
+                    client.close()
+                except:
+                    pass
+        
 
+# ------------------------
+# main
+# ------------------------
 
-# import motor
-# 
-# 
-# 
-# 
-# # main
-# 
-# if (data == "f"):
-#     motor_a()
-#     motor_b()
-#     
-# if (data == "f"):
-#     motor_a()
-#     motor_b()
-#     
-# if (data == "f"):
-#     motor_a()
-#     motor_b()
-#     
-# if (data == "f"):
-#     motor_a()
-#     motor_b()
-#     
-# if (data == "f"):
-#     motor_a()
-#     motor_b()
-#     
-# if (data == "f"):
-#     motor_a()
-#     motor_b()
-#     
-# if (data == "f"):
-#     motor_a()
-#     motor_b()
+ip = start_ap()
+start_server(ip)
