@@ -44,18 +44,25 @@ def motor_b(direction = "stop", speed = 0):
         motor_b_in4.value(0)
     motor_b_en.duty_u16(int(adjusted_speed * 65535 / 100))  # Speed: 0-100%
 
+########### CHANGE SPEED TO MATCH WHAT MOTOR CAN DO
 
-# Example
+# Motor Movement
+def move_forward():
+    motor_a("forward", 75)
+    motor_b("forward", 75)
+    
+def move_backward():
+    motor_a("backward", 75)
+    motor_b("backward", 75)
+    
+def move_left():
+    motor_a("forward", 35)
+    motor_b("forward", 75)
+    
+def move_right():
+    motor_b("forward", 35)
+    motor_a("forward", 75)
 
-motor_a("backward", 25)
-sleep(2)
-
-motor_b("forward", 50)
-
-sleep(2)
-
-# Turn off motor a using default values
-motor_a()
-
-# Turn off motor b using set values
-motor_b("stop", 0)
+def stop():
+    motor_a(stop, 0)
+    motor_b(stop, 0)
