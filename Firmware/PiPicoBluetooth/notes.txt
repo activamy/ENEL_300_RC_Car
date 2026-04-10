@@ -1,0 +1,6 @@
+max current draw for stm is 0.125A for 5V supply
+
+max current draw for stm is 0.136A for 6V supply
+
+max current draw for pico with no load is 0.070A for 5V supply
+

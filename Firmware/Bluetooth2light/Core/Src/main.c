@@ -47,6 +47,9 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 uint8_t rxData;
+volatile uint8_t data_receive = 0;
+volatile uint8_t data;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -102,11 +105,63 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  Motor_Init();
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+//	  Set_Motor_Speed(0, RED, STRAIGHT);
+//	  Set_Motor_Speed(0, RED, LEFT);
+//	  Set_Motor_Speed(0, RED, RIGHT);
+	  if (data_receive) {
+		  data_receive = 0;
+
+		  switch(data) {
+		    case 'O':
+	  			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
+	  			break;
+
+	  		case 'F':
+	  			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_RESET);
+	  			break;
+
+	  		case 'U':
+	  			Set_Motor_Speed(100, RED, STRAIGHT);
+	  			break;
+
+	  		case 'D':
+	  			Set_Motor_Speed(-100, RED, STRAIGHT);
+	  			break;
+
+	  		case 'K': // forwards and left
+	  			Set_Motor_Speed(100, RED, STRAIGHT);
+	  			break;
+
+	  		case 'Q': // forwards and right
+	  			Set_Motor_Speed(100, RED, RIGHT);
+	  			break;
+
+	  		case 'J': // back and left
+	  			Set_Motor_Speed(-100, RED, LEFT);
+	  			break;
+
+	  		case 'P': // back and right
+	  			Set_Motor_Speed(-100, RED, RIGHT);
+	  			break;
+
+	  		case 'L': // left
+	  			Set_Motor_Speed(0, RED, LEFT);
+	  			break;
+
+	  		case 'R': // right
+	  			Set_Motor_Speed(0, RED, RIGHT);
+	  			break;
+	  		case 'S':
+	  			Set_Motor_Speed(0, RED, STRAIGHT);
+	  			break;
+	  		}
+	  }
   }
   /* USER CODE END 3 */
 }
@@ -351,52 +406,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		// Forward received byte to PC via USB (USART2)
 		HAL_UART_Transmit(&huart2, &rxData, 1, 10);
 
-		switch(rxData) {
-
-		case 'O':
-			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
-			break;
-
-		case 'F':
-			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_RESET);
-			break;
-
-		case 'U':
-			Set_Motor_Speed(100, RED, STRAIGHT);
-			break;
-
-		case 'D':
-			Set_Motor_Speed(-100, RED, STRAIGHT);
-			break;
-
-		case 'K': // forwards and left
-			Set_Motor_Speed(100, RED, STRAIGHT);
-			break;
-
-		case 'Q': // forwards and right
-			Set_Motor_Speed(100, RED, RIGHT);
-			break;
-
-		case 'J': // back and left
-			Set_Motor_Speed(-100, RED, LEFT);
-			break;
-
-		case 'P': // back and right
-			Set_Motor_Speed(-100, RED, RIGHT);
-			break;
-
-		case 'L': // left
-			Set_Motor_Speed(0, RED, LEFT);
-			break;
-
-		case 'R': // right
-			Set_Motor_Speed(0, RED, RIGHT);
-			break;
-		case 'S':
-			Set_Motor_Speed(0, RED, STRAIGHT);
-			break;
-		}
-
+		data_receive = 1;
+		data = rxData;
 		HAL_UART_Receive_IT(&huart4, &rxData, 1); // what does this do again????
 
 

@@ -20,7 +20,7 @@ int time = 1000;
 void Set_Motor_Speed(int16_t speed ,  Motor_Driver driver, Direction dir) {
     // Speed range: -100 to 100
     uint32_t pulse_value = (abs(speed) * __HAL_TIM_GET_AUTORELOAD(&MOTOR_TIMER)) / 100;
-    MOTOR_TIMER_INSTANCE->CCR1=300;
+    MOTOR_TIMER_INSTANCE->CCR1=499;
 
 
 		__HAL_TIM_SET_COMPARE(&MOTOR_TIMER, MOTOR1_FCHANNEL, pulse_value);
@@ -33,17 +33,17 @@ void Set_Motor_Speed(int16_t speed ,  Motor_Driver driver, Direction dir) {
 					__HAL_TIM_SET_COMPARE(&MOTOR_TIMER, MOTOR1_FCHANNEL, pulse_value);
 					__HAL_TIM_SET_COMPARE(&MOTOR_TIMER, MOTOR1_BCHANNEL, pulse_value);
 				}else if (dir == RIGHT){
-					__HAL_TIM_SET_COMPARE(&MOTOR_TIMER, MOTOR1_FCHANNEL, pulse_value/30);
+					__HAL_TIM_SET_COMPARE(&MOTOR_TIMER, MOTOR1_FCHANNEL, pulse_value/3);
 					__HAL_TIM_SET_COMPARE(&MOTOR_TIMER, MOTOR1_BCHANNEL, pulse_value);
 				}else{
 					__HAL_TIM_SET_COMPARE(&MOTOR_TIMER, MOTOR1_FCHANNEL, pulse_value);
-					__HAL_TIM_SET_COMPARE(&MOTOR_TIMER, MOTOR1_BCHANNEL, pulse_value/30);
+					__HAL_TIM_SET_COMPARE(&MOTOR_TIMER, MOTOR1_BCHANNEL, pulse_value/3);
 				}
 				HAL_GPIO_WritePin(MOTOR_PORT, MOTOR1_F_PIN, 1);
 				HAL_GPIO_WritePin(MOTOR_PORT, MOTOR1_B_PIN, 0);
 				HAL_GPIO_WritePin(MOTOR_PORT, MOTOR2_F_PIN, 1);
 				HAL_GPIO_WritePin(MOTOR_PORT, MOTOR2_B_PIN, 0);
-				HAL_Delay(time);
+//				HAL_Delay(time);
 
 			}
 			else if (speed < 0) {
@@ -62,7 +62,7 @@ void Set_Motor_Speed(int16_t speed ,  Motor_Driver driver, Direction dir) {
 				HAL_GPIO_WritePin(MOTOR_PORT, MOTOR1_B_PIN, 1);
 				HAL_GPIO_WritePin(MOTOR_PORT, MOTOR2_F_PIN, 0);
 				HAL_GPIO_WritePin(MOTOR_PORT, MOTOR2_B_PIN, 1);
-				HAL_Delay(time);
+//				HAL_Delay(time);
 
 			}
 			else {
@@ -86,7 +86,7 @@ void Set_Motor_Speed(int16_t speed ,  Motor_Driver driver, Direction dir) {
 					HAL_GPIO_WritePin(MOTOR_PORT, MOTOR2_F_PIN, 0);
 					HAL_GPIO_WritePin(MOTOR_PORT, MOTOR2_B_PIN, 1);
 				}
-				HAL_Delay(time);
+//				HAL_Delay(time);
 			}
 			// ADD STOP BOTH LOW??(Low-Power Sleep Mode after 1ms)
 		}
