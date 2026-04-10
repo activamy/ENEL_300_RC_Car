@@ -114,54 +114,7 @@ int main(void)
 //	  Set_Motor_Speed(0, RED, STRAIGHT);
 //	  Set_Motor_Speed(0, RED, LEFT);
 //	  Set_Motor_Speed(0, RED, RIGHT);
-	  if (data_receive) {
-		  data_receive = 0;
 
-		  switch(data) {
-		    case 'O':
-	  			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
-	  			break;
-
-	  		case 'F':
-	  			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_RESET);
-	  			break;
-
-	  		case 'U':
-	  			Set_Motor_Speed(100, RED, STRAIGHT);
-	  			break;
-
-	  		case 'D':
-	  			Set_Motor_Speed(-100, RED, STRAIGHT);
-	  			break;
-
-	  		case 'K': // forwards and left
-	  			Set_Motor_Speed(100, RED, STRAIGHT);
-	  			break;
-
-	  		case 'Q': // forwards and right
-	  			Set_Motor_Speed(100, RED, RIGHT);
-	  			break;
-
-	  		case 'J': // back and left
-	  			Set_Motor_Speed(-100, RED, LEFT);
-	  			break;
-
-	  		case 'P': // back and right
-	  			Set_Motor_Speed(-100, RED, RIGHT);
-	  			break;
-
-	  		case 'L': // left
-	  			Set_Motor_Speed(0, RED, LEFT);
-	  			break;
-
-	  		case 'R': // right
-	  			Set_Motor_Speed(0, RED, RIGHT);
-	  			break;
-	  		case 'S':
-	  			Set_Motor_Speed(0, RED, STRAIGHT);
-	  			break;
-	  		}
-	  }
   }
   /* USER CODE END 3 */
 }
@@ -410,7 +363,54 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		data = rxData;
 		HAL_UART_Receive_IT(&huart4, &rxData, 1); // what does this do again????
 
+		if (data_receive) {
+				  data_receive = 0;
 
+				  switch(data) {
+				    case 'O':
+			  			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
+			  			break;
+
+			  		case 'F':
+			  			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_RESET);
+			  			break;
+
+			  		case 'U':
+			  			Set_Motor_Speed(100, RED, STRAIGHT);
+			  			break;
+
+			  		case 'D':
+			  			Set_Motor_Speed(-100, RED, STRAIGHT);
+			  			break;
+
+			  		case 'K': // forwards and left
+			  			Set_Motor_Speed(100, RED, STRAIGHT);
+			  			break;
+
+			  		case 'Q': // forwards and right
+			  			Set_Motor_Speed(100, RED, RIGHT);
+			  			break;
+
+			  		case 'J': // back and left
+			  			Set_Motor_Speed(-100, RED, LEFT);
+			  			break;
+
+			  		case 'P': // back and right
+			  			Set_Motor_Speed(-100, RED, RIGHT);
+			  			break;
+
+			  		case 'L': // left
+			  			Set_Motor_Speed(0, RED, LEFT);
+			  			break;
+
+			  		case 'R': // right
+			  			Set_Motor_Speed(0, RED, RIGHT);
+			  			break;
+			  		case 'S':
+			  			Set_Motor_Speed(0, RED, STRAIGHT);
+			  			break;
+			  		}
+			  }
 	}
 
 
