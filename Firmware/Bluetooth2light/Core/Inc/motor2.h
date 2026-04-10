@@ -5,8 +5,8 @@
  *      Author: frede
  */
 
-#ifndef INC_MOTOR_H_
-#define INC_MOTOR_H_
+#ifndef INC_MOTOR2_H_
+#define INC_MOTOR2_H_
 
 #include "stm32f4xx_hal.h"
 #include <stdint.h>
@@ -14,9 +14,9 @@
 
 #define MOTOR_TIMER          htim1        /* HAL timer handle variable name */
 #define MOTOR_TIMER_INSTANCE TIM1        /* Matching TIMx peripheral        */
-#define MOTOR1_FCHANNEL		TIM_CHANNEL_3
+#define MOTOR1_FCHANNEL		TIM_CHANNEL_3 //(Left - near c8)
 #define MOTOR1_BCHANNEL		TIM_CHANNEL_4
-#define MOTOR2_FCHANNEL		TIM_CHANNEL_1
+#define MOTOR2_FCHANNEL		TIM_CHANNEL_1 //(Right - near c15)
 #define MOTOR2_BCHANNEL		TIM_CHANNEL_2
 
 #define MOTOR_PORT      GPIOB
@@ -40,4 +40,4 @@ typedef enum {
 void Motor_Init();
 void Set_Motor_Speed(int16_t speed ,  Motor_Driver driver, Direction dir) ;
 
-#endif /* INC_MOTOR_H_ */
+#endif /* INC_MOTOR2_H_ */
