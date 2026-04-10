@@ -384,7 +384,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 			  			break;
 
 			  		case 'K': // forwards and left
-			  			Set_Motor_Speed(100, RED, STRAIGHT);
+			  			Set_Motor_Speed(100, RED, LEFT);
 			  			break;
 
 			  		case 'Q': // forwards and right
