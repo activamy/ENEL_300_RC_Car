@@ -61,7 +61,7 @@ main-build: Bluetooth2light.elf secondary-outputs
 
 # Tool invocations
 Bluetooth2light.elf Bluetooth2light.map: $(OBJS) $(USER_OBJS) C:\Users\frede\OneDrive\Documents\Code\ENEL_300_RC_Car\Firmware\Bluetooth2light\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Bluetooth2light.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\frede\OneDrive\Documents\Code\ENEL_300_RC_Car\Firmware\Bluetooth2light\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bluetooth2light.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "Bluetooth2light.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\frede\OneDrive\Documents\Code\ENEL_300_RC_Car\Firmware\Bluetooth2light\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bluetooth2light.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
