@@ -42,8 +42,8 @@
 /* Private variables ---------------------------------------------------------*/
 TIM_HandleTypeDef htim1;
 
-UART_HandleTypeDef huart4;
 UART_HandleTypeDef huart2;
+UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
 uint8_t rxData;
@@ -56,8 +56,8 @@ volatile uint8_t data;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
-static void MX_UART4_Init(void);
 static void MX_TIM1_Init(void);
+static void MX_USART3_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -97,10 +97,10 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART2_UART_Init();
-  MX_UART4_Init();
   MX_TIM1_Init();
+  MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
-  HAL_UART_Receive_IT(&huart4, &rxData, 1);
+  HAL_UART_Receive_IT(&huart3, &rxData, 1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -114,54 +114,7 @@ int main(void)
 //	  Set_Motor_Speed(0, RED, STRAIGHT);
 //	  Set_Motor_Speed(0, RED, LEFT);
 //	  Set_Motor_Speed(0, RED, RIGHT);
-	  if (data_receive) {
-		  data_receive = 0;
 
-		  switch(data) {
-		    case 'O':
-	  			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
-	  			break;
-
-	  		case 'F':
-	  			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_RESET);
-	  			break;
-
-	  		case 'U':
-	  			Set_Motor_Speed(100, RED, STRAIGHT);
-	  			break;
-
-	  		case 'D':
-	  			Set_Motor_Speed(-100, RED, STRAIGHT);
-	  			break;
-
-	  		case 'K': // forwards and left
-	  			Set_Motor_Speed(100, RED, STRAIGHT);
-	  			break;
-
-	  		case 'Q': // forwards and right
-	  			Set_Motor_Speed(100, RED, RIGHT);
-	  			break;
-
-	  		case 'J': // back and left
-	  			Set_Motor_Speed(-100, RED, LEFT);
-	  			break;
-
-	  		case 'P': // back and right
-	  			Set_Motor_Speed(-100, RED, RIGHT);
-	  			break;
-
-	  		case 'L': // left
-	  			Set_Motor_Speed(0, RED, LEFT);
-	  			break;
-
-	  		case 'R': // right
-	  			Set_Motor_Speed(0, RED, RIGHT);
-	  			break;
-	  		case 'S':
-	  			Set_Motor_Speed(0, RED, STRAIGHT);
-	  			break;
-	  		}
-	  }
   }
   /* USER CODE END 3 */
 }
@@ -283,39 +236,6 @@ static void MX_TIM1_Init(void)
 }
 
 /**
-  * @brief UART4 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_UART4_Init(void)
-{
-
-  /* USER CODE BEGIN UART4_Init 0 */
-
-  /* USER CODE END UART4_Init 0 */
-
-  /* USER CODE BEGIN UART4_Init 1 */
-
-  /* USER CODE END UART4_Init 1 */
-  huart4.Instance = UART4;
-  huart4.Init.BaudRate = 9600;
-  huart4.Init.WordLength = UART_WORDLENGTH_8B;
-  huart4.Init.StopBits = UART_STOPBITS_1;
-  huart4.Init.Parity = UART_PARITY_NONE;
-  huart4.Init.Mode = UART_MODE_TX_RX;
-  huart4.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart4.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&huart4) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN UART4_Init 2 */
-
-  /* USER CODE END UART4_Init 2 */
-
-}
-
-/**
   * @brief USART2 Initialization Function
   * @param None
   * @retval None
@@ -345,6 +265,39 @@ static void MX_USART2_UART_Init(void)
   /* USER CODE BEGIN USART2_Init 2 */
 
   /* USER CODE END USART2_Init 2 */
+
+}
+
+/**
+  * @brief USART3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART3_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART3_Init 0 */
+
+  /* USER CODE END USART3_Init 0 */
+
+  /* USER CODE BEGIN USART3_Init 1 */
+
+  /* USER CODE END USART3_Init 1 */
+  huart3.Instance = USART3;
+  huart3.Init.BaudRate = 9600;
+  huart3.Init.WordLength = UART_WORDLENGTH_8B;
+  huart3.Init.StopBits = UART_STOPBITS_1;
+  huart3.Init.Parity = UART_PARITY_NONE;
+  huart3.Init.Mode = UART_MODE_TX_RX;
+  huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART3_Init 2 */
+
+  /* USER CODE END USART3_Init 2 */
 
 }
 
@@ -401,15 +354,64 @@ static void MX_GPIO_Init(void)
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-	if(huart -> Instance == UART4)
+	if(huart -> Instance == UART3)
 	{
 		// Forward received byte to PC via USB (USART2)
 		HAL_UART_Transmit(&huart2, &rxData, 1, 10);
 
 		data_receive = 1;
 		data = rxData;
-		HAL_UART_Receive_IT(&huart4, &rxData, 1); // what does this do again????
+		HAL_UART_Receive_IT(&huart3, &rxData, 1); // what does this do again????
 
+		if (data_receive) {
+				  data_receive = 0;
+
+				  switch(data) {
+				    case 'O':
+			  			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
+			  			break;
+
+			  		case 'F':
+			  			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_RESET);
+			  			break;
+
+			  		case 'U':
+			  			Set_Motor_Speed(100, RED, STRAIGHT);
+			  			break;
+
+			  		case 'D':
+			  			Set_Motor_Speed(-100, RED, STRAIGHT);
+			  			break;
+
+			  		case 'K': // forwards and left
+			  			Set_Motor_Speed(100, RED, STRAIGHT);
+			  			break;
+
+			  		case 'Q': // forwards and right
+			  			Set_Motor_Speed(100, RED, RIGHT);
+			  			break;
+
+			  		case 'J': // back and left
+			  			Set_Motor_Speed(-100, RED, LEFT);
+			  			break;
+
+			  		case 'P': // back and right
+			  			Set_Motor_Speed(-100, RED, RIGHT);
+			  			break;
+
+			  		case 'L': // left
+			  			Set_Motor_Speed(0, RED, LEFT);
+			  			break;
+
+			  		case 'R': // right
+			  			Set_Motor_Speed(0, RED, RIGHT);
+			  			break;
+
+			  		case 'S':
+			  			Set_Motor_Speed(0, RED, STRAIGHT);
+			  			break;
+			  		}
+			  }
 
 	}
 
@@ -421,11 +423,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	  // Connection checker
 	//void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	//{
-	//    if(huart->Instance == UART4)
+	//    if(huart->Instance == UART3)
 	//    {
 	//    	HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
 	//
-	//        HAL_UART_Receive_IT(&huart4, &rxData, 1);
+	//        HAL_UART_Receive_IT(&huart3, &rxData, 1);
 	//    }
 	//}
 }
