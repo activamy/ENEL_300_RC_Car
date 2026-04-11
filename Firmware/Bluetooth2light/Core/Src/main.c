@@ -172,6 +172,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  Set_Motor_Speed(100, RED, STRAIGHT);
 	  status = HCSR04_Read(&distance_cm);
 	 	  LCD_SetCursor(0, 0);
 	 	  LCD_Print("  Distance (cm) ");
