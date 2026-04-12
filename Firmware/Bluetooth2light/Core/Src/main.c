@@ -22,9 +22,9 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "motor2.h"
-#include "hcsr04.h"
+//#include "hcsr04.h"
 #include <stdio.h>
-#include "lcd_i2c.h"
+//#include "lcd_i2c.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -120,33 +120,33 @@ int main(void)
 
   Motor_Init();
 
-   uint16_t LCD_ADDR = (0x27 << 1);/* Standard addresses are 0x27 or 0x3F. HAL requires the address to be shifted left by 1 bit. */
-
-   HAL_StatusTypeDef statusl;
-
-   statusl = HAL_I2C_IsDeviceReady(&hi2c1,LCD_ADDR, 3, 10);
-
-      if (statusl == HAL_OK) {
-          // SUCCESS: The STM32 found the LCD
-    	  LCD_Init(&hi2c1);
-          printf("System Online");
-      } else {
-          // FAILURE: The STM32 cannot find the device
-          // Trigger an error LED or serial print
-          Error_Handler();
-          printf("LCD Not Found");
-      }
-
-  LCD_Clear();
-  LCD_SetCursor(0, 0);
-  LCD_Print("  HC-SR04 Live  ");
-  LCD_SetCursor(0, 1);
-  LCD_Print("  Initializing  ");
-  HAL_Delay(1500);
-
-  char buf[17];
-  float    distance_cm;
-  HCSR04_Status status;
+//   uint16_t LCD_ADDR = (0x27 << 1);/* Standard addresses are 0x27 or 0x3F. HAL requires the address to be shifted left by 1 bit. */
+//
+//   HAL_StatusTypeDef statusl;
+//
+//   statusl = HAL_I2C_IsDeviceReady(&hi2c1,LCD_ADDR, 3, 10);
+//
+//      if (statusl == HAL_OK) {
+//          // SUCCESS: The STM32 found the LCD
+//    	  LCD_Init(&hi2c1);
+//          printf("System Online");
+//      } else {
+//          // FAILURE: The STM32 cannot find the device
+//          // Trigger an error LED or serial print
+//          Error_Handler();
+//          printf("LCD Not Found");
+//      }
+//
+//  LCD_Clear();
+//  LCD_SetCursor(0, 0);
+//  LCD_Print("  HC-SR04 Live  ");
+//  LCD_SetCursor(0, 1);
+//  LCD_Print("  Initializing  ");
+//  HAL_Delay(1500);
+//
+//  char buf[17];
+//  float    distance_cm;
+//  HCSR04_Status status;
 
 //  int filter_size = 5;
 //  float dist_arr[5] = {0,0,0,0,0};
@@ -172,24 +172,37 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  Set_Motor_Speed(100, RED, STRAIGHT);
-	  status = HCSR04_Read(&distance_cm);
-	 	  LCD_SetCursor(0, 0);
-	 	  LCD_Print("  Distance (cm) ");
-	 	  if (status == HCSR04_OK)
-	 	  {
-//	 		  filter(dist_arr, distance_cm);
-	 		  printf("Distance: %.1f cm\r\n", distance_cm); //distance_filt);
-	 		  LCD_SetCursor(0, 1);
-	 		  snprintf(buf, sizeof(buf), "    %6.1f cm   ", distance_cm); // distance_filt);
-	 		  LCD_Print(buf);
-	 	  }
-	 	  else
-	 	  {
-	 		  printf("\r\n");
-	 	  }
+	  Motor_SetSpeed(MOTOR1, 50);  // forward 50%
+	  Motor_SetSpeed(MOTOR2, 50);
 
-	 	  HAL_Delay(20);   /* Measure ~5 times per second */
+	  HAL_Delay(2000);
+
+	  Motor_SetSpeed(MOTOR1, -50); // reverse
+	  Motor_SetSpeed(MOTOR2, -50);
+
+	  HAL_Delay(2000);
+
+	  Motor_SetSpeed(MOTOR1, 0);
+	  Motor_SetSpeed(MOTOR2, 0);
+
+	  HAL_Delay(2000);
+//	  status = HCSR04_Read(&distance_cm);
+//	 	  LCD_SetCursor(0, 0);
+//	 	  LCD_Print("  Distance (cm) ");
+//	 	  if (status == HCSR04_OK)
+//	 	  {
+////	 		  filter(dist_arr, distance_cm);
+//	 		  printf("Distance: %.1f cm\r\n", distance_cm); //distance_filt);
+//	 		  LCD_SetCursor(0, 1);
+//	 		  snprintf(buf, sizeof(buf), "    %6.1f cm   ", distance_cm); // distance_filt);
+//	 		  LCD_Print(buf);
+//	 	  }
+//	 	  else
+//	 	  {
+//	 		  printf("\r\n");
+//	 	  }
+//
+//	 	  HAL_Delay(20);   /* Measure ~5 times per second */
   }
   /* USER CODE END 3 */
 }
@@ -484,9 +497,6 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|LD2_Pin|GreenLight_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5, GPIO_PIN_RESET);
-
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
@@ -506,80 +516,72 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB10 PB3 PB4 PB5 */
-  GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
   /* USER CODE BEGIN MX_GPIO_Init_2 */
-
   /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
 
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-	if(huart -> Instance == UART4)
-	{
-		// Forward received byte to PC via USB (USART2)
-		HAL_UART_Transmit(&huart2, &rxData, 1, 10);
-
-		data_receive = 1;
-		data = rxData;
-		HAL_UART_Receive_IT(&huart3, &rxData, 1); // what does this do again????
-
-		if (data_receive) {
-				  data_receive = 0;
-
-				  switch(data) {
-				    case 'O':
-			  			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
-			  			break;
-
-			  		case 'F':
-			  			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_RESET);
-			  			break;
-
-			  		case 'U':
-			  			Set_Motor_Speed(100, RED, STRAIGHT);
-			  			break;
-
-			  		case 'D':
-			  			Set_Motor_Speed(-100, RED, STRAIGHT);
-			  			break;
-
-			  		case 'K': // forwards and left
-			  			Set_Motor_Speed(100, RED, LEFT);
-			  			break;
-
-			  		case 'Q': // forwards and right
-			  			Set_Motor_Speed(100, RED, RIGHT);
-			  			break;
-
-			  		case 'J': // back and left
-			  			Set_Motor_Speed(-100, RED, LEFT);
-			  			break;
-
-			  		case 'P': // back and right
-			  			Set_Motor_Speed(-100, RED, RIGHT);
-			  			break;
-
-			  		case 'L': // left
-			  			Set_Motor_Speed(0, RED, LEFT);
-			  			break;
-
-			  		case 'R': // right
-			  			Set_Motor_Speed(0, RED, RIGHT);
-			  			break;
-			  		case 'S':
-			  			Set_Motor_Speed(0, RED, STRAIGHT);
-			  			break;
-			  		}
-			  }
-	}
+//void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+//{
+//	if(huart -> Instance == UART4)
+//	{
+//		// Forward received byte to PC via USB (USART2)
+//		HAL_UART_Transmit(&huart2, &rxData, 1, 10);
+//
+//		data_receive = 1;
+//		data = rxData;
+//		HAL_UART_Receive_IT(&huart3, &rxData, 1); // what does this do again????
+//
+//		if (data_receive) {
+//				  data_receive = 0;
+//
+//				  switch(data) {
+//				    case 'O':
+//			  			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
+//			  			break;
+//
+//			  		case 'F':
+//			  			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_RESET);
+//			  			break;
+//
+//			  		case 'U':
+//			  			Set_Motor_Speed(100, RED, STRAIGHT);
+//			  			break;
+//
+//			  		case 'D':
+//			  			Set_Motor_Speed(-100, RED, STRAIGHT);
+//			  			break;
+//
+//			  		case 'K': // forwards and left
+//			  			Set_Motor_Speed(100, RED, LEFT);
+//			  			break;
+//
+//			  		case 'Q': // forwards and right
+//			  			Set_Motor_Speed(100, RED, RIGHT);
+//			  			break;
+//
+//			  		case 'J': // back and left
+//			  			Set_Motor_Speed(-100, RED, LEFT);
+//			  			break;
+//
+//			  		case 'P': // back and right
+//			  			Set_Motor_Speed(-100, RED, RIGHT);
+//			  			break;
+//
+//			  		case 'L': // left
+//			  			Set_Motor_Speed(0, RED, LEFT);
+//			  			break;
+//
+//			  		case 'R': // right
+//			  			Set_Motor_Speed(0, RED, RIGHT);
+//			  			break;
+//			  		case 'S':
+//			  			Set_Motor_Speed(0, RED, STRAIGHT);
+//			  			break;
+//			  		}
+//			  }
+//	}
 
 
 
@@ -596,7 +598,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	//        HAL_UART_Receive_IT(&huart4, &rxData, 1);
 	//    }
 	//}
-}
+//}
 /* USER CODE END 4 */
 
 /**
