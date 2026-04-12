@@ -172,20 +172,25 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  Motor_SetSpeed(MOTOR1, 50);  // forward 50%
-	  Motor_SetSpeed(MOTOR2, 50);
+	  Motor_SetSpeed(MOTOR1, 70);  // forward 50%
+	  Motor_SetSpeed(MOTOR2, 70);
 
-	  HAL_Delay(2000);
+//	  HAL_Delay(2000);
+//
+//	  Motor_SetSpeed(MOTOR1, -50); // reverse
+//	  Motor_SetSpeed(MOTOR2, -50);
+//
+//	  HAL_Delay(2000);
+//
+//	  Motor_SetSpeed(MOTOR1, 0);
+//	  Motor_SetSpeed(MOTOR2, 0);
+//
+//	  HAL_Delay(2000);
 
-	  Motor_SetSpeed(MOTOR1, -50); // reverse
-	  Motor_SetSpeed(MOTOR2, -50);
 
-	  HAL_Delay(2000);
 
-	  Motor_SetSpeed(MOTOR1, 0);
-	  Motor_SetSpeed(MOTOR2, 0);
 
-	  HAL_Delay(2000);
+
 //	  status = HCSR04_Read(&distance_cm);
 //	 	  LCD_SetCursor(0, 0);
 //	 	  LCD_Print("  Distance (cm) ");
