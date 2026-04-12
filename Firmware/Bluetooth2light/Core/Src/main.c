@@ -173,7 +173,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	  Motor_SetSpeed(MOTOR1, 70);  // forward 50%
-	  Motor_SetSpeed(MOTOR2, 70);
+	  Motor_SetSpeed(MOTOR2, 70);   //THIS IS NOT ??% OF 6V ITS ??% OF VM+0.7
 
 //	  HAL_Delay(2000);
 //
