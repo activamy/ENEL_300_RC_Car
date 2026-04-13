@@ -56,6 +56,12 @@ uint8_t rxData;
 volatile uint8_t data_receive = 0;
 volatile uint8_t data;
 
+
+volatile uint8_t received_data;
+
+volatile uint8_t command = 'S';
+uint32_t cmd_time = 0;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -158,9 +164,39 @@ int main(void)
 
   while (1)
   {
+	  if(received_data) {
+		  received_data = 0;
+
+		  switch(command) {
+
+		  case 'F':
+			  // motor_forward
+			  break;
+		  case 'L':
+			  // motor_left
+			  break;
+		  case 'R':
+			  // motor_right
+			  break;
+		  case 'B':
+			  // motor_backward
+			  break;
+		  case 'S':
+			  //stop
+			  break;
+		  }
+	  }
+
+	  if ((HAL_GetTick() - cmd_time) > 300) {
+			  command = 'S';
+	  }
+    /* USER CODE END WHILE */
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+
+
 	  status = HCSR04_Read(&distance_cm);
 	  LCD_SetCursor(0, 0);
 	  LCD_Print("  Distance (cm) ");
@@ -564,6 +600,21 @@ void dataToMotor(uint8_t data){
 			Motor_Drive(STRAIGHT, 0);
 			break;
 		}
+}
+
+void HAL_UART_RxCpltCallback (UART_HandleTypeDef *huart)
+{
+	if (huart -> Instance == USART3) {
+		HAL_UART_Transmit(&huart2, &rx_data, 1, 10);
+		received_data = 1;
+
+		cmd_time = HAL_GetTick();
+		HAL_UART_Receive_IT(&huart3, &rx_data, 1);
+		command = rx_data;
+
+		// ensure connection
+		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+	}
 }
 //
 //void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
