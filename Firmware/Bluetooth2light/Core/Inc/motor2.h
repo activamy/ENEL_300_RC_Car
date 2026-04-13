@@ -22,6 +22,12 @@ typedef enum {
     MOTOR2 = 1
 } Motor_ID;
 
+typedef enum {
+    LEFT =  0,
+    RIGHT = 1,
+	STRAIGHT = 2,
+} Direction;
+
 // Pin mapping (IN1/IN2 per motor)
 // Motor 1 = PA8, PA9  (TIM1 CH1, CH2)
 // Motor 2 = PA10, PA11 (TIM1 CH3, CH4)
@@ -34,6 +40,7 @@ typedef enum {
 // Function prototypes
 void Motor_Init(void);
 void Motor_SetSpeed(Motor_ID motor, int16_t speed);
+void Motor_Drive(Direction direction, int16_t speed);
 
 #endif
 

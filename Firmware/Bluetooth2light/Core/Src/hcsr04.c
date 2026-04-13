@@ -67,8 +67,8 @@ HCSR04_Status HCSR04_Read(float *distance_cm)
  */
 static void delay_us(uint32_t us)
 {
-    uint32_t start = __HAL_TIM_GET_COUNTER(&HCSR04_TIMER);
-    while ((__HAL_TIM_GET_COUNTER(&HCSR04_TIMER) - start) < us);
+    uint32_t start = get_timer_count();//__HAL_TIM_GET_COUNTER(&HCSR04_TIMER);
+    while ((get_timer_count() - start) < us);//((__HAL_TIM_GET_COUNTER(&HCSR04_TIMER) - start) < us);
 }
 
 /**
