@@ -124,6 +124,9 @@ int main(void)
 		  case 'S':
 			  //stop
 			  break;
+		  case 'V':
+			  //full speed
+			  break;
 		  }
 	  }
 
