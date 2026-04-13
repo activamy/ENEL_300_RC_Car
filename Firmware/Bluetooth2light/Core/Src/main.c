@@ -52,11 +52,13 @@ UART_HandleTypeDef huart2;
 UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
-uint8_t rxData;
-volatile uint8_t data_receive = 0;
-volatile uint8_t data;
+//uint8_t rxData;
+//volatile uint8_t data_receive = 0;
+//volatile uint8_t data;
 
 
+
+uint8_t rx_data;
 volatile uint8_t received_data;
 
 volatile uint8_t command = 'S';
@@ -120,7 +122,7 @@ int main(void)
   MX_I2C1_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  HAL_UART_Receive_IT(&huart3, &rxData, 1);
+  HAL_UART_Receive_IT(&huart3, &rx_data, 1);
 
 
 
@@ -166,25 +168,25 @@ int main(void)
   {
 	  if(received_data) {
 		  received_data = 0;
-
-		  switch(command) {
-
-		  case 'F':
-			  // motor_forward
-			  break;
-		  case 'L':
-			  // motor_left
-			  break;
-		  case 'R':
-			  // motor_right
-			  break;
-		  case 'B':
-			  // motor_backward
-			  break;
-		  case 'S':
-			  //stop
-			  break;
-		  }
+		  dataToMotor(command);
+//		  switch(command) {
+//
+//		  case 'F':
+//			  // motor_forward
+//			  break;
+//		  case 'L':
+//			  // motor_left
+//			  break;
+//		  case 'R':
+//			  // motor_right
+//			  break;
+//		  case 'B':
+//			  // motor_backward
+//			  break;
+//		  case 'S':
+//			  //stop
+//			  break;
+//		  }
 	  }
 
 	  if ((HAL_GetTick() - cmd_time) > 300) {
@@ -555,46 +557,57 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+uint8_t speed;
 void dataToMotor(uint8_t data){
+
+	if (data == 'V'){
+		if (speed == 50){
+		speed = 70;
+		}
+		else{
+			speed = 50;
+		}
+	}
+
 	switch(data) {
-		case 'O':
-			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
-			break;
+//		case 'O':
+//			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_SET);
+//			break;
+//
+//		case 'F':
+//			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_RESET);
+//			break;
 
 		case 'F':
-			HAL_GPIO_WritePin(GreenLight_GPIO_Port, GreenLight_Pin, GPIO_PIN_RESET);
+			Motor_Drive(STRAIGHT, speed);
 			break;
 
-		case 'U':
-			Motor_Drive(STRAIGHT, 50);
+		case 'B':
+			Motor_Drive(STRAIGHT, -speed);
 			break;
-
-		case 'D':
-			Motor_Drive(STRAIGHT, -50);
-			break;
-
-		case 'K': // forwards and left
-			Motor_Drive(LEFT, 25);
-			break;
-
-		case 'Q': // forwards and right
-			Motor_Drive(RIGHT, 25);
-			break;
-
-		case 'J': // back and left
-			Motor_Drive(LEFT, -25);
-			break;
-
-		case 'P': // back and right
-			Motor_Drive(RIGHT, -25);
-			break;
+//
+//		case 'K': // forwards and left
+//			Motor_Drive(LEFT, 25);
+//			break;
+//
+//		case 'Q': // forwards and right
+//			Motor_Drive(RIGHT, 25);
+//			break;
+//
+//		case 'J': // back and left
+//			Motor_Drive(LEFT, -25);
+//			break;
+//
+//		case 'P': // back and right
+//			Motor_Drive(RIGHT, -25);
+//			break;
 
 		case 'L': // left
-			Motor_Drive(LEFT, 50);
+			Motor_Drive(LEFT, speed);
 			break;
 
 		case 'R': // right
-			Motor_Drive(RIGHT, 50);
+			Motor_Drive(RIGHT, speed);
 			break;
 		case 'S':
 			Motor_Drive(STRAIGHT, 0);
