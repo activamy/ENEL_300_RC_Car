@@ -48,7 +48,7 @@ uint8_t rx_data;
 volatile uint8_t received_data;
 
 volatile uint8_t command = 'S';
-uint8_t cmd_time = 0;
+uint32_t cmd_time = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -125,10 +125,10 @@ int main(void)
 			  //stop
 			  break;
 		  }
+	  }
 
-		  if ((HAL_GetTick() - cmd_time) > 200) {
+	  if ((HAL_GetTick() - cmd_time) > 300) {
 			  command = 'S';
-		  }
 	  }
     /* USER CODE END WHILE */
 
@@ -296,9 +296,9 @@ void HAL_UART_RxCpltCallback (UART_HandleTypeDef *huart)
 		HAL_UART_Transmit(&huart2, &rx_data, 1, 10);
 		received_data = 1;
 
-		command = rx_data;
 		cmd_time = HAL_GetTick();
 		HAL_UART_Receive_IT(&huart3, &rx_data, 1);
+		command = rx_data;
 
 		// ensure connection
 		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
