@@ -85,6 +85,7 @@ int __io_putchar(int ch)
     HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
     return ch;
 }
+uint8_t speed =45;
 /* USER CODE END 0 */
 
 /**
@@ -129,6 +130,8 @@ int main(void)
   Motor_Init();
   HCSR04_Init();
 
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4|GPIO_PIN_5, 1);
+
    uint16_t LCD_ADDR = (0x27 << 1);/* Standard addresses are 0x27 or 0x3F. HAL requires the address to be shifted left by 1 bit. */
 
    HAL_StatusTypeDef statusl;
@@ -162,13 +165,17 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-
-
+  LCD_Clear();
+int8_t count = 1;
   while (1)
   {
+//	  Motor_Drive(STRAIGHT, 50);
 	  if(received_data) {
 		  received_data = 0;
 		  dataToMotor(command);
+		  if (command != 'S')
+			  count++;
+		  	  printf(rx_data);
 //		  switch(command) {
 //
 //		  case 'F':
@@ -193,9 +200,12 @@ int main(void)
 			  command = 'S';
 	  }
     /* USER CODE END WHILE */
-    /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+//	  LCD_SetCursor(0, 0);
+//	  snprintf(buf, sizeof(buf), "%d   %d ", count,command);
+//	  LCD_Print(buf);
 
 
 
@@ -207,15 +217,14 @@ int main(void)
 //		  filter(dist_arr, distance_cm);
 		  printf("Distance: %.1f cm\r\n", distance_cm);
 		  LCD_SetCursor(0, 1);
-		  snprintf(buf, sizeof(buf), "    %6.1f cm   ", distance_cm);
+		  snprintf(buf, sizeof(buf), "    %3.1f cm - %d  ", distance_cm, speed);
 		  LCD_Print(buf);
 	  }
 	  else
 	  {
 		  printf("\r\n");
 	  }
-//
-//	  HAL_Delay(20);   /* Measure ~5 times per second */
+	  HAL_Delay(20);   /* Measure ~5 times per second */
 //	  Motor_SetSpeed(MOTOR1, 70);  // forward 50%
 //	  Motor_SetSpeed(MOTOR2, 70);   //THIS IS NOT ??% OF 6V ITS ??% OF VM+0.7
 //
@@ -495,7 +504,7 @@ static void MX_USART3_UART_Init(void)
 
   /* USER CODE END USART3_Init 1 */
   huart3.Instance = USART3;
-  huart3.Init.BaudRate = 9600;
+  huart3.Init.BaudRate = 115200;
   huart3.Init.WordLength = UART_WORDLENGTH_8B;
   huart3.Init.StopBits = UART_STOPBITS_1;
   huart3.Init.Parity = UART_PARITY_NONE;
@@ -533,6 +542,9 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|LD2_Pin|GreenLight_Pin, GPIO_PIN_RESET);
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4|GPIO_PIN_5, GPIO_PIN_RESET);
+
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
@@ -552,20 +564,35 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : PB4 PB5 */
+  GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
   /* USER CODE BEGIN MX_GPIO_Init_2 */
   /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
-uint8_t speed;
-void dataToMotor(uint8_t data){
+
+void dataToMotor(uint8_t data){ // max output = suplly +0.7 ,
 
 	if (data == 'V'){
-		if (speed == 50){
-		speed = 70;
+		if (speed != 65){
+		speed = 65;
 		}
 		else{
+			speed = 55;
+		}
+	}
+	else if (data == 'W'){
+		if (speed != 50){
 			speed = 50;
+		}
+		else{
+			speed = 55;
 		}
 	}
 

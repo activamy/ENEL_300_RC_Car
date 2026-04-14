@@ -27,7 +27,7 @@
 
 /* Maximum time (µs) to wait for ECHO to go HIGH or LOW before timeout.
  * HC-SR04 max range ~4 m → round-trip ~23 ms.  38 000 µs = safe ceiling. */
-#define HCSR04_TIMEOUT_US     38000U
+#define HCSR04_TIMEOUT_US     42000U
 
 /* Speed of sound (cm/µs).  Divide round-trip time by 2 for one-way. */
 #define SOUND_SPEED_CM_PER_US 0.0343f

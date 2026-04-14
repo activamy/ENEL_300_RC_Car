@@ -70,12 +70,12 @@ void Motor_Drive(Direction direction, int16_t speed){
 		Motor_SetSpeed(MOTOR2, speed);
 	}
 	else if (direction == LEFT){
-			Motor_SetSpeed(MOTOR1, 0);
+			Motor_SetSpeed(MOTOR1, -speed);
 			Motor_SetSpeed(MOTOR2, speed);
 	}
 	else if (direction == RIGHT){
 				Motor_SetSpeed(MOTOR1, speed);
-				Motor_SetSpeed(MOTOR2, 0);
+				Motor_SetSpeed(MOTOR2, -speed);
 	}
 }
 
