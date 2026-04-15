@@ -85,7 +85,14 @@ int __io_putchar(int ch)
     HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
     return ch;
 }
-uint8_t speed =45;
+
+
+
+const uint8_t full_speed= 80; //9v
+const uint8_t default_speed = 55; //6.25v
+const uint8_t slow_speed = 45; //5v
+
+uint8_t speed = default_speed;
 /* USER CODE END 0 */
 
 /**
@@ -577,22 +584,23 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+
 void dataToMotor(uint8_t data){ // max output = suplly +0.7 ,
 
 	if (data == 'V'){
-		if (speed != 65){
-		speed = 65;
+		if (speed != full_speed){
+		speed = full_speed;
 		}
 		else{
-			speed = 55;
+			speed = default_speed;
 		}
 	}
 	else if (data == 'W'){
-		if (speed != 50){
-			speed = 50;
+		if (speed != slow_speed){
+			speed = slow_speed;
 		}
 		else{
-			speed = 55;
+			speed = default_speed;
 		}
 	}
 
