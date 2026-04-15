@@ -49,6 +49,8 @@ volatile uint8_t received_data;
 
 volatile uint8_t command = 'S';
 uint32_t cmd_time = 0;
+
+char tx_buffer [32];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -133,6 +135,8 @@ int main(void)
 	  if ((HAL_GetTick() - cmd_time) > 300) {
 			  command = 'S';
 	  }
+
+	  if ((HAL_GetTick() - last_send))
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
